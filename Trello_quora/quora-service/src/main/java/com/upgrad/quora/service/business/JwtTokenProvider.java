@@ -19,7 +19,7 @@ public class JwtTokenProvider {
     private final Algorithm algorithm;
 
     /**
-     * A constructor for JwtTokenProvider class which receives user password as an argument to be used in the signature part of JWT access token.
+     * A constructor for JwtTokenProvider class which receives user password as an argument to be used in the signature part of JWT access token.git
      */
     public JwtTokenProvider(final String secret) {
         try {
