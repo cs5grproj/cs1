@@ -1,17 +1,11 @@
 package com.upgrad.quora.service.entity;
 
-import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
+import org.apache.commons.lang3.builder.*;
 
 import javax.persistence.*;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
-import java.time.ZonedDateTime;
 
 @Entity
 @Table(name = "users", schema = "quora")
@@ -21,93 +15,68 @@ import java.time.ZonedDateTime;
                 @NamedQuery(name = "userByEmail", query = "select u from UserEntity u where u.email =:email")
         }
 )
-
-
 public class UserEntity implements Serializable{
 
     @Id
-    @Column(name = "ID")
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "UUID")
-    @Size(max = 64)
+    @Column(name = "uuid")
+    @Size(max = 200)
     private String uuid;
 
-    @ManyToOne
-    @JoinColumn(name = "ROLE_ID")
-    private RoleEntity role;
-
-    @Column(name = "EMAIL")
+    @Column(name = "firstname")
     @NotNull
-    @Size(max = 200)
-    private String email;
-
-    //@ToStringExclude
-    @Column(name = "PASSWORD")
-    private String password;
-
-    @Column(name = "FIRST_NAME")
-    @NotNull
-    @Size(max = 200)
+    @Size(max = 30)
     private String firstName;
 
-    @Column(name = "LAST_NAME")
+    @Column(name = "lastname")
     @NotNull
-    @Size(max = 200)
+    @Size(max = 30)
     private String lastName;
 
-    @Column(name = "MOBILE_PHONE")
+    @Column(name = "username")
+    @NotNull
+    @Size(max = 30)
+    private String userName;
+
+    @Column(name = "email")
     @NotNull
     @Size(max = 50)
-    private String mobilePhone;
+    private String email;
 
-    @Column(name = "STATUS")
+    @ToStringExclude
+    @Column(name = "password")
     @NotNull
-    private int status;
+    @Size(max = 255)
+    private String password;
 
-    @Column(name = "FAILED_LOGIN_COUNT")
-    @Min(0)
-    @Max(5)
-    private int failedLoginCount;
-
-    @Column(name = "LAST_PASSWORD_CHANGE_AT")
-    private ZonedDateTime lastPasswordChangeAt;
-
-    @Column(name = "LAST_LOGIN_AT")
-    private ZonedDateTime lastLoginAt;
-
-    @Column(name = "SALT")
+    @Column(name = "salt")
     @NotNull
     @Size(max = 200)
     //@ToStringExclude
     private String salt;
 
-    @Version
-    @Column(name="VERSION" , length=19 , nullable = false)
-    private Long version;
+    @Column(name = "country")
+    @Size(max = 30)
+    private String country;
 
+    @Column(name = "aboutme")
+    @Size(max = 50)
+    private String aboutMe;
 
-    @Column(name="CREATED_BY")
-    @NotNull
-    private String createdBy;
+    @Column(name = "dob")
+    @Size(max = 30)
+    private String dob;
 
+    @Column(name = "role")
+    @Size(max = 30)
+    private String role;
 
-    @Column(name="CREATED_AT")
-    @NotNull
-    private ZonedDateTime createdAt;
-
-    @Column(name="MODIFIED_BY")
-    private String modifiedBy;
-
-    @Column(name="MODIFIED_AT")
-    private ZonedDateTime modifiedAt;
-
-
-    @Override
-    public boolean equals(Object obj) {
-        return new EqualsBuilder().append(this, obj).isEquals();
-    }
+    @Column(name = "contactnumber")
+    @Size(max = 30)
+    private String contactNumber;
 
     public Integer getId() {
         return id;
@@ -123,30 +92,6 @@ public class UserEntity implements Serializable{
 
     public void setUuid(String uuid) {
         this.uuid = uuid;
-    }
-
-    public RoleEntity getRole() {
-        return role;
-    }
-
-    public void setRole(RoleEntity role) {
-        this.role = role;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getFirstName() {
@@ -165,44 +110,20 @@ public class UserEntity implements Serializable{
         this.lastName = lastName;
     }
 
-    public String getMobilePhone() {
-        return mobilePhone;
+    public String getEmail() {
+        return email;
     }
 
-    public void setMobilePhone(String mobilePhone) {
-        this.mobilePhone = mobilePhone;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public int getStatus() {
-        return status;
+    public String getPassword() {
+        return password;
     }
 
-    public void setStatus(int status) {
-        this.status = status;
-    }
-
-    public int getFailedLoginCount() {
-        return failedLoginCount;
-    }
-
-    public void setFailedLoginCount(int failedLoginCount) {
-        this.failedLoginCount = failedLoginCount;
-    }
-
-    public ZonedDateTime getLastPasswordChangeAt() {
-        return lastPasswordChangeAt;
-    }
-
-    public void setLastPasswordChangeAt(ZonedDateTime lastPasswordChangeAt) {
-        this.lastPasswordChangeAt = lastPasswordChangeAt;
-    }
-
-    public ZonedDateTime getLastLoginAt() {
-        return lastLoginAt;
-    }
-
-    public void setLastLoginAt(ZonedDateTime lastLoginAt) {
-        this.lastLoginAt = lastLoginAt;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getSalt() {
@@ -213,44 +134,57 @@ public class UserEntity implements Serializable{
         this.salt = salt;
     }
 
-    public Long getVersion() {
-        return version;
+    public String getCountry() {
+        return country;
     }
 
-    public void setVersion(Long version) {
-        this.version = version;
+    public void setCountry(String country) {
+        this.country = country;
     }
 
-    public String getCreatedBy() {
-        return createdBy;
+    public String getAboutMe() {
+        return aboutMe;
     }
 
-    public void setCreatedBy(String createdBy) {
-        this.createdBy = createdBy;
+    public void setAboutMe(String aboutMe) {
+        this.aboutMe = aboutMe;
     }
 
-    public ZonedDateTime getCreatedAt() {
-        return createdAt;
+    public String getDob() {
+        return dob;
     }
 
-    public void setCreatedAt(ZonedDateTime createdAt) {
-        this.createdAt = createdAt;
+    public void setDob(String dob) {
+        this.dob = dob;
     }
 
-    public String getModifiedBy() {
-        return modifiedBy;
+    public String getRole() {
+        return role;
     }
 
-    public void setModifiedBy(String modifiedBy) {
-        this.modifiedBy = modifiedBy;
+    public void setRole(String role) {
+        this.role = role;
     }
 
-    public ZonedDateTime getModifiedAt() {
-        return modifiedAt;
+    public String getContactNumber() {
+        return contactNumber;
     }
 
-    public void setModifiedAt(ZonedDateTime modifiedAt) {
-        this.modifiedAt = modifiedAt;
+    public void setContactNumber(String contactNumber) {
+        this.contactNumber = contactNumber;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return new EqualsBuilder().append(this, obj).isEquals();
     }
 
     @Override
