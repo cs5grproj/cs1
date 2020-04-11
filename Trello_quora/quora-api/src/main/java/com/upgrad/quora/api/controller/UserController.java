@@ -21,6 +21,11 @@ public class UserController {
     @Autowired
     private SignupBusinessService signupBusinessService;
 
+    /**
+     *
+     * @param signupUserRequest
+     * @return
+     */
     @RequestMapping(method = RequestMethod.POST, path = "/user/signup", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<SignupUserResponse> signup(final SignupUserRequest signupUserRequest) {
         final UserEntity userEntity = new UserEntity();
@@ -35,6 +40,7 @@ public class UserController {
         userEntity.setAboutMe(signupUserRequest.getAboutMe());
         userEntity.setDob(signupUserRequest.getDob());
         userEntity.setContactNumber(signupUserRequest.getContactNumber());
+        userEntity.setRole("nonadmin");
 
         final UserEntity createdUserEntity = signupBusinessService.signUp(userEntity);
         SignupUserResponse userResponse = new SignupUserResponse().id(createdUserEntity.getUuid()).status("USER SUCCESSFULLY REGISTERED");

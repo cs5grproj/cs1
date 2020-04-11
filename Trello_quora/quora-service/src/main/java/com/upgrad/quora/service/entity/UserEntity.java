@@ -8,7 +8,7 @@ import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "users", schema = "quora")
+@Table(name = "USERS")
 @NamedQueries(
         {
                 @NamedQuery(name = "userByUuid", query = "select u from UserEntity u where u.uuid = :uuid"),
@@ -18,63 +18,63 @@ import java.io.Serializable;
 public class UserEntity implements Serializable{
 
     @Id
-    @Column(name = "id")
+    @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "uuid")
+    @Column(name = "UUID")
     @Size(max = 200)
     private String uuid;
 
-    @Column(name = "firstname")
+    @Column(name = "FIRSTNAME")
     @NotNull
     @Size(max = 30)
     private String firstName;
 
-    @Column(name = "lastname")
+    @Column(name = "LASTNAME")
     @NotNull
     @Size(max = 30)
     private String lastName;
 
-    @Column(name = "username")
+    @Column(name = "USERNAME")
     @NotNull
     @Size(max = 30)
     private String userName;
 
-    @Column(name = "email")
+    @Column(name = "EMAIL")
     @NotNull
     @Size(max = 50)
     private String email;
 
     @ToStringExclude
-    @Column(name = "password")
+    @Column(name = "PASSWORD")
     @NotNull
     @Size(max = 255)
     private String password;
 
-    @Column(name = "salt")
+    @Column(name = "SALT")
     @NotNull
     @Size(max = 200)
     //@ToStringExclude
     private String salt;
 
-    @Column(name = "country")
+    @Column(name = "COUNTRY")
     @Size(max = 30)
     private String country;
 
-    @Column(name = "aboutme")
+    @Column(name = "ABOUTME")
     @Size(max = 50)
     private String aboutMe;
 
-    @Column(name = "dob")
+    @Column(name = "DOB")
     @Size(max = 30)
     private String dob;
 
-    @Column(name = "role")
+    @Column(name = "ROLE")
     @Size(max = 30)
     private String role;
 
-    @Column(name = "contactnumber")
+    @Column(name = "CONTACTNUMBER")
     @Size(max = 30)
     private String contactNumber;
 
