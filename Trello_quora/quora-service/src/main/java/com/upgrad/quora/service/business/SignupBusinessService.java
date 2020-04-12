@@ -14,6 +14,15 @@ public class SignupBusinessService {
     @Autowired
     private UserDao userDao;
 
+    @Autowired
+    private UserAdminBusinessService userAdminBusinessService;
+
+    /**
+     *
+     * @param userEntity
+     * @return
+     * @throws SignUpRestrictedException
+     */
     @Transactional(propagation = Propagation.REQUIRED)
     public UserEntity signUp(UserEntity userEntity) throws SignUpRestrictedException {
         if (userDao.getUserByName(userEntity.getUserName()) != null) {
@@ -21,6 +30,6 @@ public class SignupBusinessService {
         } else if (userDao.getUserByEmail(userEntity.getEmail()) != null) {
             throw new SignUpRestrictedException("SGR-002", "This user has already been registered, try with any other emailId");
         }
-        return userDao.createUser(userEntity);
+        return userAdminBusinessService.createUser(userEntity);
     }
 }
