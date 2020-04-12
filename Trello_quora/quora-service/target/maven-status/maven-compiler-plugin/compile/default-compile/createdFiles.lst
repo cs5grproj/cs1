@@ -10,7 +10,9 @@ com/upgrad/quora/service/common/ErrorCode.class
 com/upgrad/quora/service/exception/SignOutRestrictedException.class
 com/upgrad/quora/service/exception/AnswerNotFoundException.class
 com/upgrad/quora/service/business/PasswordCryptographyProvider.class
+com/upgrad/quora/service/business/SigninBusinessService.class
 com/upgrad/quora/service/exception/SignUpRestrictedException.class
+com/upgrad/quora/service/entity/UserAuthTokenEntity.class
 com/upgrad/quora/service/business/UserAdminBusinessService.class
 com/upgrad/quora/service/exception/UserNotFoundException.class
 com/upgrad/quora/service/exception/AuthenticationFailedException.class

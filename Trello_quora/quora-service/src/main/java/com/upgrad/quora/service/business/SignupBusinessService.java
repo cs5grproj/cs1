@@ -18,7 +18,6 @@ public class SignupBusinessService {
     private UserAdminBusinessService userAdminBusinessService;
 
     /**
-     *
      * @param userEntity
      * @return
      * @throws SignUpRestrictedException
