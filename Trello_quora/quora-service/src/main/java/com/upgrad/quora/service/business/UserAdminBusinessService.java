@@ -16,22 +16,6 @@ public class UserAdminBusinessService {
     @Autowired
     private PasswordCryptographyProvider cryptographyProvider;
 
-//    public UserEntity getUser(final String userUuid, final String authorizationToken) throws ResourceNotFoundException,
-//            UnauthorizedException {
-//
-//
-//        UserAuthTokenEntity userAuthTokenEntity = userDao.getUserAuthToken(authorizationToken);
-//        RoleEntity role = userAuthTokenEntity.getUser().getRole();
-//        if (role != null && role.getUuid() == 101) {
-//            UserEntity userEntity = userDao.getUser(userUuid);
-//            if (userEntity == null) {
-//                throw new ResourceNotFoundException("USR-001", "User not found");
-//            }
-//            return userEntity;
-//        }
-//        throw new UnauthorizedException("ATH-002", "you are not authorized to fetch user details");
-//    }
-
     @Transactional(propagation = Propagation.REQUIRED)
     public UserEntity createUser(final UserEntity userEntity) {
 
