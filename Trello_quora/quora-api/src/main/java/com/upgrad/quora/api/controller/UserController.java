@@ -1,13 +1,16 @@
 package com.upgrad.quora.api.controller;
 
 import com.upgrad.quora.api.model.SigninResponse;
+import com.upgrad.quora.api.model.SignoutResponse;
 import com.upgrad.quora.api.model.SignupUserRequest;
 import com.upgrad.quora.api.model.SignupUserResponse;
 import com.upgrad.quora.service.business.SigninBusinessService;
+import com.upgrad.quora.service.business.SignoutBusinessService;
 import com.upgrad.quora.service.business.SignupBusinessService;
 import com.upgrad.quora.service.entity.UserAuthTokenEntity;
 import com.upgrad.quora.service.entity.UserEntity;
 import com.upgrad.quora.service.exception.AuthenticationFailedException;
+import com.upgrad.quora.service.exception.SignOutRestrictedException;
 import com.upgrad.quora.service.exception.SignUpRestrictedException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -31,6 +34,9 @@ public class UserController {
 
     @Autowired
     private SigninBusinessService signinBusinessService;
+
+    @Autowired
+    private SignoutBusinessService signoutBusinessService;
 
     /**
      * @param signupUserRequest
@@ -79,5 +85,25 @@ public class UserController {
         return new ResponseEntity<SigninResponse>(signinResponse, headers, HttpStatus.OK);
     }
 
+
+    @RequestMapping(method = RequestMethod.POST, path = "/user/signout", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public ResponseEntity<SignoutResponse> signout(@RequestHeader("authorization") final String authorization) throws SignOutRestrictedException {
+
+        String bearerToken = null;
+        SignoutResponse signoutResponse = null;
+
+        try {
+            bearerToken = authorization.split("Bearer ")[1];
+        } catch (ArrayIndexOutOfBoundsException e) {
+            bearerToken = authorization;
+        }
+
+        UserAuthTokenEntity userAuthToken = signoutBusinessService.signOut(bearerToken);
+        if (userAuthToken != null) {
+            signoutResponse = new SignoutResponse().id(userAuthToken.getUuid()).message("SIGN OUT SUCCESSFULLY");
+        }
+        return new ResponseEntity<SignoutResponse>(signoutResponse, HttpStatus.OK);
+
+    }
 
 }
