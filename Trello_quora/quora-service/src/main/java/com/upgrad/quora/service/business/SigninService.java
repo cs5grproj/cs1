@@ -1,6 +1,6 @@
 package com.upgrad.quora.service.business;
 
-import com.upgrad.quora.service.dao.UserDao;
+import com.upgrad.quora.service.dao.UserDAOImpl;
 import com.upgrad.quora.service.entity.UserAuthTokenEntity;
 import com.upgrad.quora.service.entity.UserEntity;
 import com.upgrad.quora.service.exception.AuthenticationFailedException;
@@ -12,10 +12,10 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.ZonedDateTime;
 
 @Service
-public class SigninBusinessService {
+public class SigninService {
 
     @Autowired
-    private UserDao userDao;
+    private UserDAOImpl userDAOImpl;
 
     @Autowired
     private PasswordCryptographyProvider passwordCryptographyProvider;
@@ -30,7 +30,7 @@ public class SigninBusinessService {
      */
     @Transactional(propagation = Propagation.REQUIRED)
     public UserAuthTokenEntity authenticate(final String userName, final String password) throws AuthenticationFailedException {
-        UserEntity userEntity = userDao.getUserByName(userName);
+        UserEntity userEntity = userDAOImpl.getUserByName(userName);
 
         if (userEntity == null) {
             throw new AuthenticationFailedException("ATH-001", "This username does not exist");
@@ -38,7 +38,7 @@ public class SigninBusinessService {
 
         final String encryptedPassword = passwordCryptographyProvider.encrypt(password, userEntity.getSalt());
 
-        userEntity = userDao.authenticateUser(userName, encryptedPassword);
+        userEntity = userDAOImpl.authenticateUser(userName, encryptedPassword);
 
         if (userEntity != null) {
             UserAuthTokenEntity userAuthToken = new UserAuthTokenEntity();
@@ -52,7 +52,7 @@ public class SigninBusinessService {
             userAuthToken.setLoginAt(now);
             userAuthToken.setExpiresAt(expiresAt);
             userAuthToken.setUuid(uuid);
-            userDao.createAuthToken(userAuthToken);
+            userDAOImpl.createAuthToken(userAuthToken);
 
             return userAuthToken;
         } else {

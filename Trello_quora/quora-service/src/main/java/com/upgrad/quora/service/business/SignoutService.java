@@ -1,6 +1,6 @@
 package com.upgrad.quora.service.business;
 
-import com.upgrad.quora.service.dao.UserDao;
+import com.upgrad.quora.service.dao.UserDAOImpl;
 import com.upgrad.quora.service.entity.UserAuthTokenEntity;
 import com.upgrad.quora.service.exception.SignOutRestrictedException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,21 +11,20 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.ZonedDateTime;
 
 @Service
-public class SignoutBusinessService {
+public class SignoutService {
 
     @Autowired
-    private UserDao userDao;
+    private UserDAOImpl userDAOImpl;
 
     @Transactional(propagation = Propagation.REQUIRED)
     public UserAuthTokenEntity signOut(final String authorizationToken) throws SignOutRestrictedException {
-        UserAuthTokenEntity userAuthToken = null;
-        userAuthToken = userDao.getUserAuthToken(authorizationToken);
+        UserAuthTokenEntity userAuthToken = userDAOImpl.getUserAuthToken(authorizationToken);
         if (userAuthToken != null) {
             final ZonedDateTime now = ZonedDateTime.now();
             userAuthToken.setLogoutAt(now);
-            userAuthToken = userDao.userSignOut(userAuthToken);
+            userAuthToken = userDAOImpl.userSignOut(userAuthToken);
         } else {
-            throw new SignOutRestrictedException("SGR-001", "User is not Signed inp-p");
+            throw new SignOutRestrictedException("SGR-001", "User is not Signed in");
         }
         return userAuthToken;
     }

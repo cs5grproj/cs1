@@ -2,12 +2,65 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="47a15d9d-c79e-46a9-bbbf-df38ac55657d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/quora-api/src/main/java/com/upgrad/quora/api/controller/CommonController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/quora-api/src/main/java/com/upgrad/quora/api/controller/AdminController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/quora-service/src/main/java/com/upgrad/quora/service/business/CommonService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/quora-service/src/main/java/com/upgrad/quora/service/business/DeleteService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/quora-service/src/main/java/com/upgrad/quora/service/dao/UserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quora-api/src/main/java/com/upgrad/quora/api/controller/CommonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/quora-api/src/main/java/com/upgrad/quora/api/controller/CommonController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quora-api/src/main/java/com/upgrad/quora/api/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/quora-api/src/main/java/com/upgrad/quora/api/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quora-api/src/main/java/com/upgrad/quora/api/exception/RestExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/quora-api/src/main/java/com/upgrad/quora/api/exception/RestExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quora-api/src/test/java/com/upgrad/quora/api/controller/AdminControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/quora-api/src/test/java/com/upgrad/quora/api/controller/AdminControllerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/quora-api/src/test/java/com/upgrad/quora/api/controller/UserControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/quora-api/src/test/java/com/upgrad/quora/api/controller/UserControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quora-service/src/main/java/com/upgrad/quora/service/business/UserAdminBusinessService.java" beforeDir="false" afterPath="$PROJECT_DIR$/quora-service/src/main/java/com/upgrad/quora/service/business/UserAdminBusinessService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quora-service/src/main/java/com/upgrad/quora/service/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/quora-service/src/main/java/com/upgrad/quora/service/dao/UserDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quora-api/target/classes/com/upgrad/quora/api/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/quora-api/target/classes/com/upgrad/quora/api/controller/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quora-api/target/classes/com/upgrad/quora/api/exception/RestExceptionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/quora-api/target/classes/com/upgrad/quora/api/exception/RestExceptionHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quora-api/target/generated-sources/com/upgrad/quora/api/model/AnswerDeleteResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/quora-api/target/generated-sources/com/upgrad/quora/api/model/AnswerDeleteResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quora-api/target/generated-sources/com/upgrad/quora/api/model/AnswerDetailsResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/quora-api/target/generated-sources/com/upgrad/quora/api/model/AnswerDetailsResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quora-api/target/generated-sources/com/upgrad/quora/api/model/AnswerEditRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/quora-api/target/generated-sources/com/upgrad/quora/api/model/AnswerEditRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quora-api/target/generated-sources/com/upgrad/quora/api/model/AnswerEditResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/quora-api/target/generated-sources/com/upgrad/quora/api/model/AnswerEditResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quora-api/target/generated-sources/com/upgrad/quora/api/model/AnswerRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/quora-api/target/generated-sources/com/upgrad/quora/api/model/AnswerRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quora-api/target/generated-sources/com/upgrad/quora/api/model/AnswerResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/quora-api/target/generated-sources/com/upgrad/quora/api/model/AnswerResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quora-api/target/generated-sources/com/upgrad/quora/api/model/ErrorResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/quora-api/target/generated-sources/com/upgrad/quora/api/model/ErrorResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quora-api/target/generated-sources/com/upgrad/quora/api/model/QuestionDeleteResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/quora-api/target/generated-sources/com/upgrad/quora/api/model/QuestionDeleteResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quora-api/target/generated-sources/com/upgrad/quora/api/model/QuestionDetailsResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/quora-api/target/generated-sources/com/upgrad/quora/api/model/QuestionDetailsResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quora-api/target/generated-sources/com/upgrad/quora/api/model/QuestionEditRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/quora-api/target/generated-sources/com/upgrad/quora/api/model/QuestionEditRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quora-api/target/generated-sources/com/upgrad/quora/api/model/QuestionEditResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/quora-api/target/generated-sources/com/upgrad/quora/api/model/QuestionEditResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quora-api/target/generated-sources/com/upgrad/quora/api/model/QuestionRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/quora-api/target/generated-sources/com/upgrad/quora/api/model/QuestionRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quora-api/target/generated-sources/com/upgrad/quora/api/model/QuestionResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/quora-api/target/generated-sources/com/upgrad/quora/api/model/QuestionResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quora-api/target/generated-sources/com/upgrad/quora/api/model/SigninResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/quora-api/target/generated-sources/com/upgrad/quora/api/model/SigninResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quora-api/target/generated-sources/com/upgrad/quora/api/model/SignoutResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/quora-api/target/generated-sources/com/upgrad/quora/api/model/SignoutResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quora-api/target/generated-sources/com/upgrad/quora/api/model/SignupUserRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/quora-api/target/generated-sources/com/upgrad/quora/api/model/SignupUserRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quora-api/target/generated-sources/com/upgrad/quora/api/model/SignupUserResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/quora-api/target/generated-sources/com/upgrad/quora/api/model/SignupUserResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quora-api/target/generated-sources/com/upgrad/quora/api/model/UserDeleteResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/quora-api/target/generated-sources/com/upgrad/quora/api/model/UserDeleteResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quora-api/target/generated-sources/com/upgrad/quora/api/model/UserDetailsResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/quora-api/target/generated-sources/com/upgrad/quora/api/model/UserDetailsResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quora-api/target/generated-sources/io/swagger/api/ApiException.java" beforeDir="false" afterPath="$PROJECT_DIR$/quora-api/target/generated-sources/io/swagger/api/ApiException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quora-api/target/generated-sources/io/swagger/api/ApiOriginFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/quora-api/target/generated-sources/io/swagger/api/ApiOriginFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quora-api/target/generated-sources/io/swagger/api/ApiResponseMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/quora-api/target/generated-sources/io/swagger/api/ApiResponseMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quora-api/target/generated-sources/io/swagger/api/NotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/quora-api/target/generated-sources/io/swagger/api/NotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quora-api/target/generated-sources/io/swagger/configuration/SwaggerDocumentationConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/quora-api/target/generated-sources/io/swagger/configuration/SwaggerDocumentationConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quora-api/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/quora-api/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quora-api/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/quora-api/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quora-api/target/quora-api-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/quora-api/target/quora-api-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quora-api/target/test-classes/com/upgrad/quora/api/controller/UserControllerTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quora-db/target/quora-db.jar" beforeDir="false" afterPath="$PROJECT_DIR$/quora-db/target/quora-db.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quora-service/src/main/java/com/upgrad/quora/service/business/SigninBusinessService.java" beforeDir="false" afterPath="$PROJECT_DIR$/quora-service/src/main/java/com/upgrad/quora/service/business/SigninService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quora-service/src/main/java/com/upgrad/quora/service/business/SignoutBusinessService.java" beforeDir="false" afterPath="$PROJECT_DIR$/quora-service/src/main/java/com/upgrad/quora/service/business/SignoutService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quora-service/src/main/java/com/upgrad/quora/service/business/SignupBusinessService.java" beforeDir="false" afterPath="$PROJECT_DIR$/quora-service/src/main/java/com/upgrad/quora/service/business/SignupService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quora-service/src/main/java/com/upgrad/quora/service/business/UserAdminBusinessService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quora-service/src/main/java/com/upgrad/quora/service/business/UserBusinessService.java" beforeDir="false" afterPath="$PROJECT_DIR$/quora-service/src/main/java/com/upgrad/quora/service/business/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quora-service/src/main/java/com/upgrad/quora/service/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/quora-service/src/main/java/com/upgrad/quora/service/dao/UserDAOImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/quora-service/src/main/java/com/upgrad/quora/service/entity/UserEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/quora-service/src/main/java/com/upgrad/quora/service/entity/UserEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quora-service/target/classes/com/upgrad/quora/service/business/SigninBusinessService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quora-service/target/classes/com/upgrad/quora/service/business/SignoutBusinessService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quora-service/target/classes/com/upgrad/quora/service/business/SignupBusinessService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quora-service/target/classes/com/upgrad/quora/service/business/UserAdminBusinessService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quora-service/target/classes/com/upgrad/quora/service/dao/UserDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/quora-service/target/classes/com/upgrad/quora/service/dao/UserDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quora-service/target/classes/com/upgrad/quora/service/entity/UserEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/quora-service/target/classes/com/upgrad/quora/service/entity/UserEntity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quora-service/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/quora-service/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quora-service/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/quora-service/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quora-service/target/quora-service-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/quora-service/target/quora-service-1.0-SNAPSHOT.jar" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,18 +80,10 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="MavenImportPreferences">
-    <option name="importingSettings">
-      <MavenImportingSettings>
-        <option name="importAutomatically" value="true" />
-      </MavenImportingSettings>
-    </option>
-  </component>
   <component name="ProjectId" id="1aT9RTI5C5w8YN1g0DlarRHjER6" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
@@ -59,8 +104,9 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.18216683" />
+    <property name="restartRequiresConfirmation" value="false" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Java" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -71,8 +117,8 @@
       <recent name="E:\Trello_quora\quora-api\src\main\resources" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.UserControllerTest">
-    <configuration name="AnswerControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Spring Boot.QuoraApiApplication">
+    <configuration name="AdminControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="quora-api" />
       <extension name="coverage">
         <pattern>
@@ -81,7 +127,22 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.upgrad.quora.api.controller" />
-      <option name="MAIN_CLASS_NAME" value="com.upgrad.quora.api.controller.AnswerControllerTest" />
+      <option name="MAIN_CLASS_NAME" value="com.upgrad.quora.api.controller.AdminControllerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CommonControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="quora-api" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.upgrad.quora.api.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.upgrad.quora.api.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.upgrad.quora.api.controller.CommonControllerTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -98,22 +159,6 @@
       <option name="PACKAGE_NAME" value="com.upgrad.quora.api.controller" />
       <option name="MAIN_CLASS_NAME" value="com.upgrad.quora.api.controller.UserControllerTest" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserControllerTest.signupWithRepeatedEmail" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="quora-api" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.upgrad.quora.api.controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.upgrad.quora.api.controller" />
-      <option name="MAIN_CLASS_NAME" value="com.upgrad.quora.api.controller.UserControllerTest" />
-      <option name="METHOD_NAME" value="signupWithRepeatedEmail" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -148,19 +193,19 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.AnswerControllerTest" />
       <item itemvalue="JUnit.UserControllerTest" />
       <item itemvalue="JUnit.UserControllerTest.signupWithRepeatedUserName" />
-      <item itemvalue="JUnit.UserControllerTest.signupWithRepeatedEmail" />
       <item itemvalue="Spring Boot.QuoraApiApplication" />
+      <item itemvalue="JUnit.CommonControllerTest" />
+      <item itemvalue="JUnit.AdminControllerTest" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.UserControllerTest" />
         <item itemvalue="Spring Boot.QuoraApiApplication" />
+        <item itemvalue="JUnit.AdminControllerTest" />
+        <item itemvalue="JUnit.CommonControllerTest" />
+        <item itemvalue="JUnit.UserControllerTest" />
         <item itemvalue="JUnit.UserControllerTest.signupWithRepeatedUserName" />
-        <item itemvalue="JUnit.UserControllerTest.signupWithRepeatedEmail" />
-        <item itemvalue="JUnit.AnswerControllerTest" />
       </list>
     </recent_temporary>
   </component>
@@ -193,12 +238,17 @@
       <workItem from="1538642827225" duration="1059000" />
       <workItem from="1538723860955" duration="5425000" />
       <workItem from="1586748710838" duration="3000" />
-      <workItem from="1586748726565" duration="14056000" />
+      <workItem from="1586748726565" duration="14983000" />
+      <workItem from="1587131609842" duration="2262000" />
+      <workItem from="1587215762258" duration="647000" />
+      <workItem from="1587262193965" duration="1298000" />
+      <workItem from="1587278413586" duration="10628000" />
+      <workItem from="1587301432843" duration="37824000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
     <state x="440" y="170" key="#Assign_Data_Sources" timestamp="1586620814556">
@@ -209,78 +259,86 @@
       <screen x="0" y="23" width="1680" height="963" />
     </state>
     <state x="440" y="170" key="#Inspections/0.23.1680.963@0.23.1680.963" timestamp="1586609422434" />
+    <state x="100" y="123" width="1480" height="763" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1587375393506">
+      <screen x="0" y="23" width="1680" height="963" />
+    </state>
+    <state x="100" y="123" width="1480" height="763" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.23.1680.963@0.23.1680.963" timestamp="1587375393506" />
     <state x="653" y="195" key="#com.intellij.ide.util.MemberChooser" timestamp="1586711515031">
       <screen x="0" y="23" width="1680" height="963" />
     </state>
     <state x="653" y="195" key="#com.intellij.ide.util.MemberChooser/0.23.1680.963@0.23.1680.963" timestamp="1586711515031" />
+    <state x="114" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1587366079637">
+      <screen x="0" y="23" width="1680" height="963" />
+    </state>
+    <state x="114" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.23.1680.963@0.23.1680.963" timestamp="1587366079637" />
     <state x="585" y="349" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1586717566186">
       <screen x="0" y="23" width="1680" height="963" />
     </state>
     <state x="585" y="349" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.23.1680.963@0.23.1680.963" timestamp="1586717566186" />
-    <state width="1638" height="320" key="GridCell.Tab.0.bottom" timestamp="1586883324194">
+    <state width="1638" height="259" key="GridCell.Tab.0.bottom" timestamp="1587382788031">
       <screen x="0" y="23" width="1680" height="963" />
     </state>
-    <state width="1638" height="320" key="GridCell.Tab.0.bottom/0.23.1680.963@0.23.1680.963" timestamp="1586883324194" />
-    <state width="1638" height="320" key="GridCell.Tab.0.center" timestamp="1586883324193">
+    <state width="1638" height="259" key="GridCell.Tab.0.bottom/0.23.1680.963@0.23.1680.963" timestamp="1587382788031" />
+    <state width="1638" height="259" key="GridCell.Tab.0.center" timestamp="1587382788031">
       <screen x="0" y="23" width="1680" height="963" />
     </state>
-    <state width="1638" height="320" key="GridCell.Tab.0.center/0.23.1680.963@0.23.1680.963" timestamp="1586883324193" />
-    <state width="1638" height="320" key="GridCell.Tab.0.left" timestamp="1586883324192">
+    <state width="1638" height="259" key="GridCell.Tab.0.center/0.23.1680.963@0.23.1680.963" timestamp="1587382788031" />
+    <state width="1638" height="259" key="GridCell.Tab.0.left" timestamp="1587382788030">
       <screen x="0" y="23" width="1680" height="963" />
     </state>
-    <state width="1638" height="320" key="GridCell.Tab.0.left/0.23.1680.963@0.23.1680.963" timestamp="1586883324192" />
-    <state width="1638" height="320" key="GridCell.Tab.0.right" timestamp="1586883324193">
+    <state width="1638" height="259" key="GridCell.Tab.0.left/0.23.1680.963@0.23.1680.963" timestamp="1587382788030" />
+    <state width="1638" height="259" key="GridCell.Tab.0.right" timestamp="1587382788031">
       <screen x="0" y="23" width="1680" height="963" />
     </state>
-    <state width="1638" height="320" key="GridCell.Tab.0.right/0.23.1680.963@0.23.1680.963" timestamp="1586883324193" />
-    <state width="1638" height="320" key="GridCell.Tab.1.bottom" timestamp="1586883324195">
+    <state width="1638" height="259" key="GridCell.Tab.0.right/0.23.1680.963@0.23.1680.963" timestamp="1587382788031" />
+    <state width="1638" height="259" key="GridCell.Tab.1.bottom" timestamp="1587382766494">
       <screen x="0" y="23" width="1680" height="963" />
     </state>
-    <state width="1638" height="320" key="GridCell.Tab.1.bottom/0.23.1680.963@0.23.1680.963" timestamp="1586883324195" />
-    <state width="1638" height="320" key="GridCell.Tab.1.center" timestamp="1586883324194">
+    <state width="1638" height="259" key="GridCell.Tab.1.bottom/0.23.1680.963@0.23.1680.963" timestamp="1587382766494" />
+    <state width="1638" height="259" key="GridCell.Tab.1.center" timestamp="1587382766493">
       <screen x="0" y="23" width="1680" height="963" />
     </state>
-    <state width="1638" height="320" key="GridCell.Tab.1.center/0.23.1680.963@0.23.1680.963" timestamp="1586883324194" />
-    <state width="1638" height="320" key="GridCell.Tab.1.left" timestamp="1586883324194">
+    <state width="1638" height="259" key="GridCell.Tab.1.center/0.23.1680.963@0.23.1680.963" timestamp="1587382766493" />
+    <state width="1638" height="259" key="GridCell.Tab.1.left" timestamp="1587382766493">
       <screen x="0" y="23" width="1680" height="963" />
     </state>
-    <state width="1638" height="320" key="GridCell.Tab.1.left/0.23.1680.963@0.23.1680.963" timestamp="1586883324194" />
-    <state width="1638" height="320" key="GridCell.Tab.1.right" timestamp="1586883324194">
+    <state width="1638" height="259" key="GridCell.Tab.1.left/0.23.1680.963@0.23.1680.963" timestamp="1587382766493" />
+    <state width="1638" height="259" key="GridCell.Tab.1.right" timestamp="1587382766493">
       <screen x="0" y="23" width="1680" height="963" />
     </state>
-    <state width="1638" height="320" key="GridCell.Tab.1.right/0.23.1680.963@0.23.1680.963" timestamp="1586883324194" />
-    <state width="1638" height="366" key="GridCell.Tab.2.bottom" timestamp="1586715220140">
+    <state width="1638" height="259" key="GridCell.Tab.1.right/0.23.1680.963@0.23.1680.963" timestamp="1587382766493" />
+    <state width="1638" height="320" key="GridCell.Tab.2.bottom" timestamp="1587367626935">
       <screen x="0" y="23" width="1680" height="963" />
     </state>
-    <state width="1638" height="366" key="GridCell.Tab.2.bottom/0.23.1680.963@0.23.1680.963" timestamp="1586715220140" />
-    <state width="1638" height="366" key="GridCell.Tab.2.center" timestamp="1586715220139">
+    <state width="1638" height="320" key="GridCell.Tab.2.bottom/0.23.1680.963@0.23.1680.963" timestamp="1587367626935" />
+    <state width="1638" height="320" key="GridCell.Tab.2.center" timestamp="1587367626934">
       <screen x="0" y="23" width="1680" height="963" />
     </state>
-    <state width="1638" height="366" key="GridCell.Tab.2.center/0.23.1680.963@0.23.1680.963" timestamp="1586715220139" />
-    <state width="1638" height="366" key="GridCell.Tab.2.left" timestamp="1586715220139">
+    <state width="1638" height="320" key="GridCell.Tab.2.center/0.23.1680.963@0.23.1680.963" timestamp="1587367626934" />
+    <state width="1638" height="320" key="GridCell.Tab.2.left" timestamp="1587367626934">
       <screen x="0" y="23" width="1680" height="963" />
     </state>
-    <state width="1638" height="366" key="GridCell.Tab.2.left/0.23.1680.963@0.23.1680.963" timestamp="1586715220139" />
-    <state width="1638" height="366" key="GridCell.Tab.2.right" timestamp="1586715220140">
+    <state width="1638" height="320" key="GridCell.Tab.2.left/0.23.1680.963@0.23.1680.963" timestamp="1587367626934" />
+    <state width="1638" height="320" key="GridCell.Tab.2.right" timestamp="1587367626935">
       <screen x="0" y="23" width="1680" height="963" />
     </state>
-    <state width="1638" height="366" key="GridCell.Tab.2.right/0.23.1680.963@0.23.1680.963" timestamp="1586715220140" />
-    <state x="328" y="86" key="SettingsEditor" timestamp="1586837853136">
+    <state width="1638" height="320" key="GridCell.Tab.2.right/0.23.1680.963@0.23.1680.963" timestamp="1587367626935" />
+    <state x="328" y="86" key="SettingsEditor" timestamp="1587366209276">
       <screen x="0" y="23" width="1680" height="963" />
     </state>
-    <state x="328" y="86" key="SettingsEditor/0.23.1680.963@0.23.1680.963" timestamp="1586837853136" />
+    <state x="328" y="86" key="SettingsEditor/0.23.1680.963@0.23.1680.963" timestamp="1587366209276" />
     <state x="100" y="123" width="1480" height="763" key="dock-window-1" timestamp="1586456132615">
       <screen x="0" y="23" width="1680" height="963" />
     </state>
     <state x="100" y="123" width="1480" height="763" key="dock-window-1/0.23.1680.963@0.23.1680.963" timestamp="1586456132615" />
-    <state x="498" y="261" width="691" height="486" key="find.popup" timestamp="1586675460357">
+    <state x="540" y="168" width="1056" height="693" key="find.popup" timestamp="1587376390793">
       <screen x="0" y="23" width="1680" height="963" />
     </state>
-    <state x="498" y="261" width="691" height="486" key="find.popup/0.23.1680.963@0.23.1680.963" timestamp="1586675460357" />
-    <state x="505" y="234" width="670" height="676" key="search.everywhere.popup" timestamp="1586542814228">
+    <state x="540" y="168" width="1056" height="693" key="find.popup/0.23.1680.963@0.23.1680.963" timestamp="1587376390793" />
+    <state x="505" y="234" width="670" height="676" key="search.everywhere.popup" timestamp="1587325068989">
       <screen x="0" y="23" width="1680" height="963" />
     </state>
-    <state x="505" y="234" width="670" height="676" key="search.everywhere.popup/0.23.1680.963@0.23.1680.963" timestamp="1586542814228" />
+    <state x="505" y="234" width="670" height="676" key="search.everywhere.popup/0.23.1680.963@0.23.1680.963" timestamp="1587325068989" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -291,18 +349,36 @@
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/quora-service/src/main/java/com/upgrad/quora/service/business/SigninBusinessService.java</url>
+          <url>file://$PROJECT_DIR$/quora-service/src/main/java/com/upgrad/quora/service/business/SigninService.java</url>
           <line>40</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/quora-api/src/test/java/com/upgrad/quora/api/controller/UserControllerTest.java</url>
-          <line>43</line>
+          <line>44</line>
           <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/quora-service/src/main/java/com/upgrad/quora/service/business/SignupService.java</url>
+          <line>26</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/quora-service/src/main/java/com/upgrad/quora/service/dao/UserDAOImpl.java</url>
+          <line>66</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/quora-api/src/main/java/com/upgrad/quora/api/controller/CommonController.java</url>
+          <line>24</line>
+          <option name="timeStamp" value="13" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
+      <configuration name="JUnit">
+        <watch expression="userAdminBusinessService" language="JAVA" />
+      </configuration>
       <configuration name="SpringBootApplicationConfigurationType">
         <watch expression="userEntity" />
       </configuration>

@@ -9,12 +9,12 @@ import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
 @Repository
-public class UserDao {
+public class UserDAOImpl implements UserDAO {
 
     @PersistenceContext
     private EntityManager entityManager;
 
-    public UserEntity createUser(UserEntity userEntity) {
+    public UserEntity signUpUser(UserEntity userEntity) {
         entityManager.persist(userEntity);
         return userEntity;
     }
@@ -36,9 +36,9 @@ public class UserDao {
         }
     }
 
-    public UserEntity getUserByUuid(final String userUuid) {
+    public UserEntity getUserByUuid(final String userId) {
         try {
-            return entityManager.createNamedQuery("userByUuid", UserEntity.class).setParameter("uuid", userUuid)
+            return entityManager.createNamedQuery("userByUuid", UserEntity.class).setParameter("uuid", userId)
                     .getSingleResult();
         } catch (NoResultException nre) {
             return null;
@@ -63,14 +63,13 @@ public class UserDao {
         }
     }
 
-    public UserAuthTokenEntity getUserAuthToken(final String accessToken) {
+    public UserAuthTokenEntity getUserAuthToken(final String authorization) {
         try {
-            return entityManager.createNamedQuery("userAuthTokenByAccessToken", UserAuthTokenEntity.class).setParameter("accessToken", accessToken).getSingleResult();
+            return entityManager.createNamedQuery("userAuthTokenByAccessToken", UserAuthTokenEntity.class).setParameter("accessToken", authorization).getSingleResult();
         } catch (NoResultException nre) {
 
             return null;
         }
-
     }
 
     public UserAuthTokenEntity userSignOut(final UserAuthTokenEntity userAuthTokenEntity) {
@@ -81,5 +80,9 @@ public class UserDao {
         }
     }
 
+    public void deleteUser(String uuid) {
+        UserEntity userEntity = getUserByUuid(uuid);
+        entityManager.remove(userEntity);
+    }
 
 }

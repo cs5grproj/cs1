@@ -4,9 +4,9 @@ import com.upgrad.quora.api.model.SigninResponse;
 import com.upgrad.quora.api.model.SignoutResponse;
 import com.upgrad.quora.api.model.SignupUserRequest;
 import com.upgrad.quora.api.model.SignupUserResponse;
-import com.upgrad.quora.service.business.SigninBusinessService;
-import com.upgrad.quora.service.business.SignoutBusinessService;
-import com.upgrad.quora.service.business.SignupBusinessService;
+import com.upgrad.quora.service.business.SigninService;
+import com.upgrad.quora.service.business.SignoutService;
+import com.upgrad.quora.service.business.SignupService;
 import com.upgrad.quora.service.entity.UserAuthTokenEntity;
 import com.upgrad.quora.service.entity.UserEntity;
 import com.upgrad.quora.service.exception.AuthenticationFailedException;
@@ -17,10 +17,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Base64;
 import java.util.UUID;
@@ -30,20 +27,21 @@ import java.util.UUID;
 public class UserController {
 
     @Autowired
-    private SignupBusinessService signupBusinessService;
+    private SignupService signupService;
 
     @Autowired
-    private SigninBusinessService signinBusinessService;
+    private SigninService signinService;
 
     @Autowired
-    private SignoutBusinessService signoutBusinessService;
+    private SignoutService signoutService;
 
     /**
      * @param signupUserRequest
      * @return
      */
     @RequestMapping(method = RequestMethod.POST, path = "/user/signup", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<SignupUserResponse> signup(final SignupUserRequest signupUserRequest) throws SignUpRestrictedException {
+//    @PostMapping(value = "/user/signup", consumes = "application/json", produces = "application/json")
+    public ResponseEntity<SignupUserResponse> signUpUser(final SignupUserRequest signupUserRequest) throws SignUpRestrictedException {
         final UserEntity userEntity = new UserEntity();
         userEntity.setUuid(UUID.randomUUID().toString());
         userEntity.setFirstName(signupUserRequest.getFirstName());
@@ -58,7 +56,7 @@ public class UserController {
         userEntity.setContactNumber(signupUserRequest.getContactNumber());
         userEntity.setRole("nonadmin");
 
-        final UserEntity createdUserEntity = signupBusinessService.signUp(userEntity);
+        final UserEntity createdUserEntity = signupService.signUpUser(userEntity);
         SignupUserResponse userResponse = new SignupUserResponse().id(createdUserEntity.getUuid()).status("USER SUCCESSFULLY REGISTERED");
         return new ResponseEntity<SignupUserResponse>(userResponse, HttpStatus.CREATED);
     }
@@ -75,7 +73,7 @@ public class UserController {
         String decodedText = new String(decode);
         String[] decodedArray = decodedText.split(":");
 
-        UserAuthTokenEntity userAuthToken = signinBusinessService.authenticate(decodedArray[0], decodedArray[1]);
+        UserAuthTokenEntity userAuthToken = signinService.authenticate(decodedArray[0], decodedArray[1]);
         UserEntity user = userAuthToken.getUser();
 
         SigninResponse signinResponse = new SigninResponse().id(user.getUuid()).message("SIGNED IN SUCCESSFULLY");
@@ -98,9 +96,9 @@ public class UserController {
             bearerToken = authorization;
         }
 
-        UserAuthTokenEntity userAuthToken = signoutBusinessService.signOut(bearerToken);
+        UserAuthTokenEntity userAuthToken = signoutService.signOut(bearerToken);
         if (userAuthToken != null) {
-            signoutResponse = new SignoutResponse().id(userAuthToken.getUuid()).message("SIGN OUT SUCCESSFULLY");
+            signoutResponse = new SignoutResponse().id(userAuthToken.getUuid()).message("SIGNED OUT SUCCESSFULLY");
         }
         return new ResponseEntity<SignoutResponse>(signoutResponse, HttpStatus.OK);
 
