@@ -15,7 +15,6 @@ public class CommonService {
     private UserDAOImpl userDAOImpl;
 
     /**
-     *
      * @param userId
      * @param authorization
      * @return
@@ -33,7 +32,7 @@ public class CommonService {
         }
 
         // Validate user logout
-        if(userAuthTokenEntity.getLogoutAt() != null) {
+        if (userAuthTokenEntity.getLogoutAt() != null) {
             throw new AuthorizationFailedException("ATHR-002", "User is signed out.Sign in first to get user details");
         }
 

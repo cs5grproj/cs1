@@ -30,7 +30,6 @@ public class RestExceptionHandler {
     }
 
     /**
-     *
      * @param exe
      * @param request
      * @return
@@ -55,7 +54,6 @@ public class RestExceptionHandler {
     }
 
     /**
-     *
      * @param exe
      * @param request
      * @return

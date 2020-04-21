@@ -17,7 +17,6 @@ public class UserService {
     private PasswordCryptographyProvider cryptographyProvider;
 
     /**
-     *
      * @param userEntity
      * @return
      */
@@ -32,7 +31,6 @@ public class UserService {
         userEntity.setPassword(encryptedText[1]);
         return userDAOImpl.signUpUser(userEntity);
     }
-
 
 
 }

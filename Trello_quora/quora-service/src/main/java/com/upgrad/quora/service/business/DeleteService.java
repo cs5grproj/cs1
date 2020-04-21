@@ -48,6 +48,13 @@ public class DeleteService {
 //        return userEntity.getUuid();
 //    }
 
+    /**
+     * @param userUuid
+     * @param authorizationToken
+     * @return
+     * @throws AuthorizationFailedException
+     * @throws UserNotFoundException
+     */
     @Transactional(propagation = Propagation.REQUIRED)
     public String deleteUser(final String userUuid, final String authorizationToken)
             throws AuthorizationFailedException, UserNotFoundException {
@@ -59,7 +66,7 @@ public class DeleteService {
         }
 
         // Validate user sign out
-        if (userAuthTokenEntity.getLogoutAt() !=  null) {
+        if (userAuthTokenEntity.getLogoutAt() != null) {
             throw new AuthorizationFailedException("ATHR-002", "User is signed out");
         }
 
@@ -69,7 +76,7 @@ public class DeleteService {
         }
         UserEntity userEntityToDelete = userDAOImpl.getUserByUuid(userUuid);
 
-        // Check if user to be deleted is present in repository
+        // Validate existence of user to be deleted in DB
         if (userEntityToDelete == null) {
             throw new UserNotFoundException("USR-001", "User with entered uuid to be deleted does not exist");
         } else {
