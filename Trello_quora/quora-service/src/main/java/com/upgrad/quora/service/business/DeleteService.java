@@ -59,7 +59,7 @@ public class DeleteService {
         }
 
         // Validate user sign out
-        if (userAuthTokenEntity.getLogoutAt() ==  null) {
+        if (userAuthTokenEntity.getLogoutAt() !=  null) {
             throw new AuthorizationFailedException("ATHR-002", "User is signed out");
         }
 
