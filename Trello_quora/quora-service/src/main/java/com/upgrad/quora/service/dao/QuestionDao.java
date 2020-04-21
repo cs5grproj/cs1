@@ -16,11 +16,12 @@ public class QuestionDao {
         entityManager.persist(QuestionEntity);
         return QuestionEntity;
     }
-
+    /*
+    method to get all the questions from the question DB
+     */
     public List<QuestionEntity> getAllQuestions(final String authorizationToken) {
         try {
-            return entityManager.createNamedQuery("userByName", UserEntity.class).setParameter("userName", userAuthTokenEntity)
-                    .getResultList(); //work on this query
+            return entityManager.createNamedQuery("getAllQuestionsQuery", QuestionEntity.class).getResultList();
         } catch (NoResultException nre) {
             return null;
         }
