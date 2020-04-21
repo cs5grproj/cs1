@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.ZonedDateTime;
+import java.util.List;
 
 @Service
 public class AnswerService {
@@ -65,5 +66,22 @@ public class AnswerService {
        else {
            throw new AuthorizationFailedException("ATHR-003","Only the answer owner can edit the answer");
         }
+    }
+    @Transactional(propagation = Propagation.REQUIRED)
+    public List<AnswerEntity> getAllAnswers(final String authorizationToken, final String questionId) throws AuthorizationFailedException, InvalidQuestionException {
+        UserAuthTokenEntity userAuthTokenEntity = answerDao.getLogInUserAuthToken(authorizationToken);
+        if (userAuthTokenEntity == null) {
+            userAuthTokenEntity = answerDao.getUserAuthToken(authorizationToken);
+            if (userAuthTokenEntity == null) {
+                throw new AuthorizationFailedException("ATHR-001", "User has not signed in");
+            } else {
+                throw new AuthorizationFailedException("ATHR-002", "User is signed out.Sign in first to post an answer");
+            }
+        }
+        QuestionEntity questionEntity = answerDao.getQuestion(questionId);
+        if(questionEntity == null){
+            throw new InvalidQuestionException("QUES-001","The question with entered uuid whose details are to be seen does not exist");
+        }
+        return answerDao.getAnswerByQuestionId(questionEntity);
     }
 }

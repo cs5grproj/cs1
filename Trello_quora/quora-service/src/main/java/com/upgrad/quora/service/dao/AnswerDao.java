@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+import java.util.List;
 
 @Repository
 public class AnswerDao {
@@ -51,5 +52,14 @@ public class AnswerDao {
 
     public AnswerEntity updateAnswer(final AnswerEntity answerEntity) {
         return entityManager.merge(answerEntity);
+    }
+
+    public List<AnswerEntity> getAnswerByQuestionId(final QuestionEntity questionId) {
+        try {
+            List<AnswerEntity> resultList = entityManager.createNamedQuery("answersByQuestionId", AnswerEntity.class).setParameter("question", questionId).getResultList();
+            return resultList;
+        } catch (NoResultException nre) {
+            return null;
+        }
     }
 }

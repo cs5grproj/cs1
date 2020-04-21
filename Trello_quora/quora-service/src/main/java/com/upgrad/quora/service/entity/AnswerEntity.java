@@ -13,6 +13,7 @@ import java.time.ZonedDateTime;
 @Table(name = "answer", schema = "quora")
 @NamedQueries({
         @NamedQuery(name = "answerByUuid", query = "select a from AnswerEntity a where a.uuid =:uuid")
+        @NamedQuery(name = "answersByQuestionId", query = "select ans from AnswerEntity ans where ans.question =:question")
 })
 public class AnswerEntity implements Serializable {
     @Id

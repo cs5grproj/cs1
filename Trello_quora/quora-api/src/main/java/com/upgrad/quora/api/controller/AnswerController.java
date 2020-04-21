@@ -1,9 +1,6 @@
 package com.upgrad.quora.api.controller;
 
-import com.upgrad.quora.api.model.AnswerEditRequest;
-import com.upgrad.quora.api.model.AnswerEditResponse;
-import com.upgrad.quora.api.model.AnswerRequest;
-import com.upgrad.quora.api.model.AnswerResponse;
+import com.upgrad.quora.api.model.*;
 import com.upgrad.quora.service.business.AnswerService;
 import com.upgrad.quora.service.entity.AnswerEntity;
 import com.upgrad.quora.service.exception.AnswerNotFoundException;
@@ -16,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.ZonedDateTime;
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -42,4 +40,11 @@ public class AnswerController {
         AnswerEditResponse answerEditResponse = new AnswerEditResponse().id(editedAnswer.getUuid()).status("ANSWER EDITED");
         return new ResponseEntity<AnswerEditResponse>(answerEditResponse,HttpStatus.OK);
     }
+
+    @RequestMapping(method = RequestMethod.GET, path="/answer/all/{questionId}",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public ResponseEntity<AnswerDetailsResponse> getAllAnswers(@RequestHeader("authorization") final String authorization,@PathVariable("questionId") final String questionId)throws AuthorizationFailedException, InvalidQuestionException{
+        final List<AnswerEntity> receivedAllAnswers = answerService.getAllAnswers(authorization,questionId);
+        return new ResponseEntity<List<AnswerDetailsResponse>>(receivedAllAnswers, HttpStatus.OK);
+    }
+
 }
