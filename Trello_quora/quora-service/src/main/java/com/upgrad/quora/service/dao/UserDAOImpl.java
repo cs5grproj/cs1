@@ -67,7 +67,6 @@ public class UserDAOImpl implements UserDAO {
         try {
             return entityManager.createNamedQuery("userAuthTokenByAccessToken", UserAuthTokenEntity.class).setParameter("accessToken", authorization).getSingleResult();
         } catch (NoResultException nre) {
-
             return null;
         }
     }

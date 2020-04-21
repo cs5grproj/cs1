@@ -22,7 +22,15 @@ public class CommonController {
 //    @GetMapping(value = "/userprofile/{userId}", produces = "application/json")
     public ResponseEntity<UserDetailsResponse> userProfile(@PathVariable("userId") final String userId, @RequestHeader("authorization") final String authorization) throws AuthorizationFailedException, UserNotFoundException {
 
-        final UserEntity userEntity = commonService.getUserByUuid(userId, authorization);
+        String bearerToken = null;
+
+        try {
+            bearerToken = authorization.split("Bearer ")[1];
+        } catch (ArrayIndexOutOfBoundsException e) {
+            bearerToken = authorization;
+        }
+
+        final UserEntity userEntity = commonService.getUserByUuid(userId, bearerToken);
         UserDetailsResponse userDetailsResponse = new UserDetailsResponse().firstName(userEntity.getFirstName())
                 .lastName(userEntity.getLastName()).userName(userEntity.getUserName()).emailAddress(userEntity.getEmail())
                 .country(userEntity.getCountry()).aboutMe(userEntity.getAboutMe()).dob(userEntity.getDob()).contactNumber(userEntity.getContactNumber());
