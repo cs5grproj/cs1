@@ -38,5 +38,10 @@ public class AnswerDAO {
     public AnswerEntity updateAnswer(final AnswerEntity answerEntity) {
         return entityManager.merge(answerEntity);
     }
+
+    //Function to delete the answer with the answer entity details passed
+    public void deleteAnswer(final AnswerEntity answerEntity) {
+        entityManager.remove(answerEntity);
+    }
 }
 

@@ -56,5 +56,23 @@ public class AnswerService {
             throw new AuthorizationFailedException("ATHR-003","Only the answer owner can edit the answer");
         }
     }
+
+    //Delete Answer
+    public AnswerEntity deleteAnswer(final String answerId, final String authorizationToken) throws AuthorizationFailedException, AnswerNotFoundException {
+        //Checking the user is authorized and if authorized user is logged in.
+        //Validate User Authorization status is implemented as a common function in Common Service
+        UserAuthTokenEntity userAuthTokenEntity = commonService.getUserAuthorizationStatus(authorizationToken);
+        AnswerEntity existingAnswerEntity = answerDao.getAnswerById(answerId);
+        if(existingAnswerEntity == null){
+            throw new AnswerNotFoundException("ANS-001", "Entered answer uuid does not exist");
+        }
+        if((existingAnswerEntity.getUser().getId() == userAuthTokenEntity.getUser().getId()) || userAuthTokenEntity.getUser().getRole().equals("admin")){
+            answerDao.deleteAnswer(existingAnswerEntity);
+            return existingAnswerEntity;
+        }
+        else {
+            throw new AuthorizationFailedException("ATHR-003","Only the answer owner can edit the answer");
+        }
+    }
 }
 
