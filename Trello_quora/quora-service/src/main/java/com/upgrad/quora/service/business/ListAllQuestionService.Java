@@ -31,6 +31,6 @@ public class ListAllQuestionService {
             throw new AuthorizationFailedException("ATHR-002", "User is signed out.Sign in first to get all questions");
         }
         // return all the list of questions from the question DB
-        return questionDao.getAllQuestions(userAuthToken);
+        return questionDao.getAllQuestions();
     }
 }
