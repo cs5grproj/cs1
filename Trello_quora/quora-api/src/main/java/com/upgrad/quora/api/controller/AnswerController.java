@@ -11,6 +11,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Iterator;
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -40,8 +43,18 @@ public class AnswerController {
 
     @RequestMapping(method = RequestMethod.DELETE, path="/answer/delete/{answerId}",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<AnswerDeleteResponse> editAnswer(@RequestHeader("authorization") final String authorization, @PathVariable("answerId") final String answerId) throws AuthorizationFailedException, AnswerNotFoundException {
-        final AnswerEntity editedAnswer = answerService.deleteAnswer(answerId,authorization);
-        AnswerDeleteResponse answerDeleteResponse = new AnswerDeleteResponse().id(editedAnswer.getUuid()).status("ANSWER DELETED");
+        final AnswerEntity deleteAnswer = answerService.deleteAnswer(answerId,authorization);
+        AnswerDeleteResponse answerDeleteResponse = new AnswerDeleteResponse().id(deleteAnswer.getUuid()).status("ANSWER DELETED");
         return new ResponseEntity<AnswerDeleteResponse>(answerDeleteResponse,HttpStatus.OK);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path="/answer/all/{questionId}",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public ResponseEntity<AnswerDetailsResponse> getAllAnswers(@RequestHeader("authorization") final String authorization,@PathVariable("questionId") final String questionId)throws AuthorizationFailedException, InvalidQuestionException{
+        final List<AnswerEntity> receivedAllAnswers = answerService.getAllAnswers(questionId,authorization);
+        AnswerDetailsResponse answerDetailsResponse = new AnswerDetailsResponse();
+            for(Iterator<AnswerEntity> answer = receivedAllAnswers.iterator(); answer.hasNext(); ) {
+                answerDetailsResponse.answerContent(answer.next().getAns()).id(answer.next().getUuid()).questionContent(answer.next().getQuestion().getContent());
+            }
+        return new ResponseEntity<AnswerDetailsResponse>(answerDetailsResponse,HttpStatus.OK);
     }
 }

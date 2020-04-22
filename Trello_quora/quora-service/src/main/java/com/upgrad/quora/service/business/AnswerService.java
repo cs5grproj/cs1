@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.ZonedDateTime;
+import java.util.List;
 
 @Service
 public class AnswerService {
@@ -35,7 +36,7 @@ public class AnswerService {
         answerEntity.setDate(ZonedDateTime.now());
         return answerDao.createAnswer(answerEntity);
     }
-
+    @Transactional(propagation = Propagation.REQUIRED)
     //Edit Answer
     public AnswerEntity editAnswer(final String answerId, final String authorizationToken, final AnswerEntity answerEntity) throws AuthorizationFailedException, AnswerNotFoundException {
         //Checking the user is authorized and if authorized user is logged in.
@@ -56,7 +57,7 @@ public class AnswerService {
             throw new AuthorizationFailedException("ATHR-003","Only the answer owner can edit the answer");
         }
     }
-
+    @Transactional(propagation = Propagation.REQUIRED)
     //Delete Answer
     public AnswerEntity deleteAnswer(final String answerId, final String authorizationToken) throws AuthorizationFailedException, AnswerNotFoundException {
         //Checking the user is authorized and if authorized user is logged in.
@@ -73,6 +74,17 @@ public class AnswerService {
         else {
             throw new AuthorizationFailedException("ATHR-003","Only the answer owner can edit the answer");
         }
+    }
+
+    //Get All Answers
+    @Transactional(propagation = Propagation.REQUIRED)
+    public List<AnswerEntity> getAllAnswers(final String questionId, final String authorizationToken) throws AuthorizationFailedException, InvalidQuestionException {
+        UserAuthTokenEntity userAuthTokenEntity = commonService.getUserAuthorizationStatus(authorizationToken);
+        QuestionEntity questionEntity = answerDao.getQuestion(questionId);
+        if(questionEntity == null){
+            throw new InvalidQuestionException("QUES-001","The question with entered uuid whose details are to be seen does not exist");
+        }
+        return answerDao.getAnswerByQuestionId(questionEntity);
     }
 }
 
