@@ -70,7 +70,7 @@ public class AnswerService {
             return existingAnswerEntity;
         }
         else {
-            throw new AuthorizationFailedException("ATHR-003","Only the answer owner can edit the answer");
+            throw new AuthorizationFailedException("ATHR-003","Only the answer owner or admin can delete the answer");
         }
     }
 
