@@ -47,11 +47,9 @@ public class AnswerService {
             throw new AnswerNotFoundException("ANS-001", "Entered answer uuid does not exist");
         }
         if(existingAnswerEntity.getUser().getId() == userAuthTokenEntity.getUser().getId()){
-            answerEntity.setQuestion(existingAnswerEntity.getQuestion());
-            answerEntity.setUser(userAuthTokenEntity.getUser());
-            answerEntity.setUuid(existingAnswerEntity.getUuid());
-            answerEntity.setDate(ZonedDateTime.now());
-            return answerDao.updateAnswer(answerEntity);
+            existingAnswerEntity.setAns(answerEntity.getAns());
+            existingAnswerEntity.setDate(ZonedDateTime.now());
+            return answerDao.updateAnswer(existingAnswerEntity);
         }
         else {
             throw new AuthorizationFailedException("ATHR-003","Only the answer owner can edit the answer");
