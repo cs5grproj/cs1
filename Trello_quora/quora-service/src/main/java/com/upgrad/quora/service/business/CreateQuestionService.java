@@ -30,6 +30,6 @@ public class CreateQuestionService {
         if (userAuthToken.getLogoutAt() ==  null) {
             throw new AuthorizationFailedException("ATHR-002", "User is signed out.Sign in first to post a question");
         }
-        return questionDao.createQuestion();
+        return questionDao.createQuestion(questionEntity);
     }
 }
