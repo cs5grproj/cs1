@@ -15,14 +15,12 @@ import org.springframework.transaction.annotation.Transactional;
 public class CreateQuestionService {
 
     @Autowired
-    private UserDao userDao;
+    private UserDAO userDao;
     @Autowired
     private QuestionDao questionDao;
 
-    // work on this service and head to dao / entity to write a query to get uuid using token.
-
     @Transactional(propagation = Propagation.REQUIRED)
-    public List<QuestionEntity> createQuestion(final String authorizationToken) throws AuthorizationFailedException {
+    public QuestionEntity createQuestion(final String authorizationToken) throws AuthorizationFailedException {
         UserAuthTokenEntity userAuthToken = null;
         userAuthToken = userDao.getUserAuthToken(authorizationToken);
 
@@ -32,7 +30,6 @@ public class CreateQuestionService {
         if (userAuthToken.getLogoutAt() ==  null) {
             throw new AuthorizationFailedException("ATHR-002", "User is signed out.Sign in first to post a question");
         }
-        // return all the list of questions from the question DB
-        return questionDao.getAllQuestions(userAuthToken);
+        return questionDao.createQuestion(questionEntity);
     }
 }

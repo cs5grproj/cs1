@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class ListAllQuestionService {
 
     @Autowired
-    private UserDao userDao;
+    private UserDAO userDao;
     @Autowired
     private QuestionDao questionDao;
 

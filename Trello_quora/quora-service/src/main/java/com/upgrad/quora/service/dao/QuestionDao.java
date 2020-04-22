@@ -13,7 +13,7 @@ public class QuestionDao {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public QuestionEntity createQuestion(QuestionEntity QuestionEntity) {
+    public QuestionEntity createQuestion(QuestionEntity questionEntity) {
         entityManager.persist(QuestionEntity);
         return QuestionEntity;
     }
