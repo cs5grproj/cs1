@@ -43,4 +43,21 @@ public class CommonService {
         }
         return userEntity;
     }
+
+    public UserAuthTokenEntity getUserAuthorizationStatus(final String authorization) throws
+            AuthorizationFailedException {
+
+        // Validate user token
+        UserAuthTokenEntity userAuthTokenEntity = userDAOImpl.getUserAuthToken(authorization);
+
+        if (userAuthTokenEntity == null) {
+            throw new AuthorizationFailedException("ATHR-001", "User has not signed in");
+        }
+
+        // Validate user logout
+        if (userAuthTokenEntity.getLogoutAt() != null) {
+            throw new AuthorizationFailedException("ATHR-002", "User is signed out.Sign in first to get user details");
+        }
+        return userAuthTokenEntity;
+    }
 }
