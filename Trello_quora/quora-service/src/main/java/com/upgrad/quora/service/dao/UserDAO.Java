@@ -9,7 +9,7 @@ import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
 @Repository
-public class UserDao {
+public class UserDAO {
 
     @PersistenceContext
     private EntityManager entityManager;
