@@ -20,7 +20,7 @@ public class QuestionDao {
     /*
     method to get all the questions from the question DB
      */
-    public List<QuestionEntity> getAllQuestions(final String authorizationToken) {
+    public List<QuestionEntity> getAllQuestions() {
         try {
             return entityManager.createNamedQuery("getAllQuestionsQuery", QuestionEntity.class).getResultList();
         } catch (NoResultException nre) {
