@@ -12,6 +12,7 @@ import javax.persistence.PersistenceContext;
 public class AnswerDAO {
     @PersistenceContext
     private EntityManager entityManager;
+    //Function to return the Question Entity object based on the question uuid passed. If doesn't exists, null is returned
     public QuestionEntity getQuestion(final String uuid){
         try {
             return entityManager.createNamedQuery("questionByUuid", QuestionEntity.class).setParameter("uuid", uuid).getSingleResult();
@@ -19,9 +20,23 @@ public class AnswerDAO {
             return null;
         }
     }
+    //Function to return the Answer Entity object after creating the answer record
     public AnswerEntity createAnswer(AnswerEntity answerEntity){
         entityManager.persist(answerEntity);
         return answerEntity;
+    }
+    //Function to return the Answer Entity object based on the answer uuid passed. If doesn't exists, null is returned
+    public AnswerEntity getAnswerById(final String uuid){
+        try {
+            return entityManager.createNamedQuery("answerByUuid", AnswerEntity.class).setParameter("uuid", uuid).getSingleResult();
+        } catch (NoResultException nre) {
+            return null;
+        }
+    }
+
+    //Function to update the answer with the answer entity details passed
+    public AnswerEntity updateAnswer(final AnswerEntity answerEntity) {
+        return entityManager.merge(answerEntity);
     }
 }
 
