@@ -38,7 +38,7 @@ public class QuestionDao {
     //getQuestionByUserId
     public QuestionEntity getQuestionByUuid(final String uuid) {
         try {
-            return entityManager.createNamedQuery("getQuestionByUuid", QuestionEntity.class).setParameter("uuid", uuid).getSingleResult();
+            return entityManager.createNamedQuery("questionByUuid", QuestionEntity.class).setParameter("uuid", uuid).getSingleResult();
         } catch (NoResultException nre) {
             return null;
         }
