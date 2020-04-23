@@ -13,17 +13,39 @@ public class CommonService {
 
     @Autowired
     private UserDAOImpl userDAOImpl;
-
+    /*
     /**
-     *
      * @param userId
      * @param authorization
      * @return
      * @throws AuthorizationFailedException
      * @throws UserNotFoundException
      */
-    public UserEntity getUserByUuid(final String userId, final String authorization) throws
+    /*public UserEntity getUserByUuid(final String userId, final String authorization) throws
             AuthorizationFailedException, UserNotFoundException {
+
+
+      UserAuthTokenEntity userAuthTokenEntity=userDAOImpl.getUserAuthToken(authorization);
+
+        // Validate existence of user in the database
+        if (userAuthTokenEntity == null) {
+            throw new AuthorizationFailedException("ATHR-001", "User has not signed in");
+        }
+
+        // Validate user sign out
+        if (userAuthTokenEntity.getLogoutAt() != null) {
+            throw new AuthorizationFailedException("ATHR-002", "User is signed out");
+        }
+
+
+        // Validate existence of UUID
+        UserEntity userEntity = userDAOImpl.getUserByUuid(userId);
+        if (userEntity == null) {
+            throw new UserNotFoundException("USR-001", "User with entered uuid does not exist");
+        }
+        return userEntity;
+    }*/
+    public UserEntity getUserByUuid(final String userId, final String authorization) throws AuthorizationFailedException, UserNotFoundException {
 
         // Validate user token
         UserAuthTokenEntity userAuthTokenEntity = userDAOImpl.getUserAuthToken(authorization);
@@ -33,7 +55,7 @@ public class CommonService {
         }
 
         // Validate user logout
-        if(userAuthTokenEntity.getLogoutAt() != null) {
+        if (userAuthTokenEntity.getLogoutAt() != null) {
             throw new AuthorizationFailedException("ATHR-002", "User is signed out.Sign in first to get user details");
         }
 
@@ -44,4 +66,23 @@ public class CommonService {
         }
         return userEntity;
     }
+
+    public UserAuthTokenEntity getUserAuthorizationStatus(final String authorization) throws
+            AuthorizationFailedException {
+
+        // Validate user token
+        UserAuthTokenEntity userAuthTokenEntity = userDAOImpl.getUserAuthToken(authorization);
+
+        if (userAuthTokenEntity == null) {
+            throw new AuthorizationFailedException("ATHR-001", "User has not signed in");
+        }
+
+        // Validate user logout
+        if (userAuthTokenEntity.getLogoutAt() != null) {
+            throw new AuthorizationFailedException("ATHR-002", "User is signed out.Sign in first to get user details");
+        }
+        return userAuthTokenEntity;
+    }
+
+
 }

@@ -30,7 +30,6 @@ public class RestExceptionHandler {
     }
 
     /**
-     *
      * @param exe
      * @param request
      * @return
@@ -55,7 +54,6 @@ public class RestExceptionHandler {
     }
 
     /**
-     *
      * @param exe
      * @param request
      * @return
@@ -64,6 +62,18 @@ public class RestExceptionHandler {
     public ResponseEntity<ErrorResponse> signOutRestrictedException(SignOutRestrictedException exe, WebRequest request) {
         return new ResponseEntity<ErrorResponse>(
                 new ErrorResponse().code(exe.getCode()).message(exe.getErrorMessage()), HttpStatus.UNAUTHORIZED
+        );
+    }
+
+    /**
+     * @param exe
+     * @param request
+     * @return
+     */
+    @ExceptionHandler(InvalidQuestionException.class)
+    public ResponseEntity<ErrorResponse> invalidQuestionException(InvalidQuestionException exe, WebRequest request) {
+        return new ResponseEntity<ErrorResponse>(
+                new ErrorResponse().code(exe.getCode()).message(exe.getErrorMessage()), HttpStatus.NOT_FOUND
         );
     }
 }
