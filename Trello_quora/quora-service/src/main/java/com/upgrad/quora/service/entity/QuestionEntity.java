@@ -12,10 +12,12 @@ import java.io.Serializable;
 import java.time.ZonedDateTime;
 
 @Entity
-@Table(name = "QUESTION")
+@Table(name = "question")
 @NamedQueries({
         @NamedQuery(name = "getAllQuestionsQuery", query = "select ut from QuestionEntity ut"),
-        @NamedQuery(name= "questionByUuid", query = "select q from QuestionEntity q where q.uuid =:uuid")
+        @NamedQuery(name = "questionByUuid", query = "select q from QuestionEntity q where q.uuid =:uuid"),
+        @NamedQuery(name = "getQuestionsByUser", query = "select que from QuestionEntity que where que.user=:user")
+
 })
 public class QuestionEntity implements Serializable {
 
@@ -25,6 +27,7 @@ public class QuestionEntity implements Serializable {
     private Integer id;
 
     @Column(name = "UUID")
+    @NotNull
     @Size(max = 200)
     private String uuid;
 
