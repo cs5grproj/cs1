@@ -17,6 +17,16 @@ public class CommonController {
 
   @Autowired private CommonService commonService;
 
+  /**
+   * This endpoint fetches details of any user in the Quora Application.
+   *
+   * @param userId - Unique identifier of User in a standard UUID format
+   * @param authorization - Mandatory user credentials in bearer http authentication scheme format.
+   * @return - Returns all the details of the user from the database in the JSON response with the
+   *     corresponding HTTP status.
+   * @throws AuthorizationFailedException
+   * @throws UserNotFoundException
+   */
   @RequestMapping(
       method = RequestMethod.GET,
       path = "/userprofile/{userId}",

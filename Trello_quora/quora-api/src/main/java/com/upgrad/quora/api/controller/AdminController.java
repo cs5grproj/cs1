@@ -16,6 +16,18 @@ public class AdminController {
 
   @Autowired private DeleteService deleteService;
 
+  /**
+   * This endpoint deletes a user from the Quora Application. Only an admin is authorized to access
+   * this endpoint.
+   *
+   * @param userId - Unique identifier of User in a standard UUID format
+   * @param authorization - Mandatory user credentials in bearer http authentication scheme format.
+   * @return - Delete the records from all the tables related to that user and return 'uuid' of the
+   *     deleted user from 'users' table and message 'USER SUCCESSFULLY DELETED' in the JSON
+   *     response with the corresponding HTTP status.
+   * @throws AuthorizationFailedException
+   * @throws UserNotFoundException
+   */
   @RequestMapping(
       method = RequestMethod.DELETE,
       path = "/admin/user/{userId}",
