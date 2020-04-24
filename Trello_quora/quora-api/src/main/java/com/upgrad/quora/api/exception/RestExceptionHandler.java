@@ -65,6 +65,11 @@ public class RestExceptionHandler {
         );
     }
 
+    /**
+     * @param exe
+     * @param request
+     * @return
+     */
     @ExceptionHandler(InvalidQuestionException.class)
     public ResponseEntity<ErrorResponse> invalidQuestionException(InvalidQuestionException exe, WebRequest request){
         return new ResponseEntity<ErrorResponse>(
@@ -72,6 +77,11 @@ public class RestExceptionHandler {
         );
     }
 
+    /**
+     * @param exe
+     * @param request
+     * @return
+     */
     @ExceptionHandler(AnswerNotFoundException.class)
     public ResponseEntity<ErrorResponse> answerNotFoundException(AnswerNotFoundException exe, WebRequest request){
         return new ResponseEntity<ErrorResponse>(
