@@ -44,6 +44,12 @@ public class CommonService {
         return userEntity;
     }
 
+    /**
+     * This method is to authorize the user. If user token is valid and is user still logged in.
+     * @param authorization
+     * @return UserAuthTokenEntity object
+     * @thows AuthorizationFailedException
+     */
     public UserAuthTokenEntity getUserAuthorizationStatus(final String authorization) throws
             AuthorizationFailedException {
 
