@@ -21,6 +21,14 @@ public class QuestionDao {
         entityManager.persist(questionEntity);
         return questionEntity;
     }
+    //getAllQuestions
+    public List<QuestionEntity> getAllQuestions() {
+        try {
+            return entityManager.createNamedQuery("getAllQuestionsQuery", QuestionEntity.class).getResultList();
+        } catch (NoResultException nre) {
+            return null;
+        }
+    }
 
     //update question
     public QuestionEntity updateQuestion(final QuestionEntity questionEntity) {
@@ -36,7 +44,7 @@ public class QuestionDao {
     }
 
     //getQuestionByUserId
-    public QuestionEntity getQuestionByUuid(final String uuid) {
+    public QuestionEntity questionByUuid(final String uuid) {
         try {
             return entityManager.createNamedQuery("questionByUuid", QuestionEntity.class).setParameter("uuid", uuid).getSingleResult();
         } catch (NoResultException nre) {

@@ -2,6 +2,8 @@ package com.upgrad.quora.api.controller;
 
 
 import com.upgrad.quora.api.model.*;
+import com.upgrad.quora.service.business.CreateQuestionService;
+import com.upgrad.quora.service.business.ListAllQuestionService;
 import com.upgrad.quora.service.business.QuestionService;
 import com.upgrad.quora.service.entity.QuestionEntity;
 import com.upgrad.quora.service.exception.AuthorizationFailedException;
@@ -13,10 +15,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.ZonedDateTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 
 @RestController
@@ -24,20 +23,51 @@ import java.util.UUID;
 public class QuestionController {
     @Autowired
     private QuestionService questionService;
+    @Autowired
+    private CreateQuestionService createQuestionService;
+    @Autowired
+    private ListAllQuestionService listAllQuestionService;
 
     //create Question
     @RequestMapping(method = RequestMethod.POST, path = "/question/create", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<QuestionResponse> createQuestion(@RequestHeader("authorization") final String authorization, final QuestionRequest questionRequest) throws AuthorizationFailedException {
+        String bearerToken = null;
+        QuestionResponse questionResponse = null;
+
+        try {
+            bearerToken = authorization.split("Bearer ")[1];
+        } catch (ArrayIndexOutOfBoundsException e) {
+            bearerToken = authorization;
+        }
         QuestionEntity questionEntity = new QuestionEntity();
         questionEntity.setContent(questionRequest.getContent());
         questionEntity.setUuid(UUID.randomUUID().toString());
-        questionEntity.setDate(ZonedDateTime.now());
-
-        final QuestionEntity createdQuestion = questionService.createQuestion(authorization, questionEntity);
-
-        QuestionResponse questionResponse = new QuestionResponse().id(createdQuestion.getUuid()).status("QUESTION CREATED");
-
+        QuestionEntity createdQuestion = createQuestionService.createQuestion(bearerToken);
+        questionResponse = new QuestionResponse().id(createdQuestion.getUuid()).status("QUESTION CREATED");
         return new ResponseEntity<QuestionResponse>(questionResponse, HttpStatus.CREATED);
+
+    }
+
+   //getAllQuestions
+    @RequestMapping(method = RequestMethod.GET, path = "/question/all", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public ResponseEntity<List<QuestionDetailsResponse>> getAllQuestions(@RequestHeader("authorization") final String authorization) throws AuthorizationFailedException {
+        //public ResponseEntity<QuestionDetailsResponse> getAllQuestions(String bearerAuthorization) throws AuthorizationFailedException{
+        String bearerToken = null;
+        QuestionResponse questionResponse = null;
+        try {
+            bearerToken = authorization.split("Bearer ")[1];
+        } catch (ArrayIndexOutOfBoundsException e) {
+            bearerToken = authorization;
+        }
+        // getting a list of all questions here..
+        final List<QuestionEntity> questionEntityList = listAllQuestionService.getAllQuestions(bearerToken);
+        List<QuestionDetailsResponse> questionDetailsResponseList = new ArrayList<>();
+        for (Iterator<QuestionEntity> question = questionEntityList.iterator(); question.hasNext(); ) {
+            QuestionDetailsResponse questionDetailsResponse = new QuestionDetailsResponse().id(question.next().getUuid()).content(question.next().getContent());
+            questionDetailsResponseList.add(questionDetailsResponse);
+        }
+
+        return new ResponseEntity<List<QuestionDetailsResponse>>(questionDetailsResponseList, HttpStatus.OK);
 
     }
 
@@ -53,7 +83,7 @@ public class QuestionController {
 
     //deleteQuestion
     @RequestMapping(method = RequestMethod.DELETE, path = "/question/delete/{questionId}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<QuestionDeleteResponse> deleteQuestion(@RequestHeader("authorizaion") final String authorization, @PathVariable("questionId") final String questionId) throws AuthorizationFailedException, InvalidQuestionException {
+    public ResponseEntity<QuestionDeleteResponse> deleteQuestion(@RequestHeader("authorization") final String authorization, @PathVariable("questionId") final String questionId) throws AuthorizationFailedException, InvalidQuestionException {
         final QuestionEntity deleteQuestion = questionService.deleteQuestion(questionId, authorization);
         QuestionDeleteResponse questionDeleteResponse = new QuestionDeleteResponse().id(deleteQuestion.getUuid()).status("Question DELETED");
         return new ResponseEntity<QuestionDeleteResponse>(questionDeleteResponse, HttpStatus.OK);
