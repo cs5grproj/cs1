@@ -45,7 +45,7 @@ public class AnswerDAO {
         entityManager.remove(answerEntity);
     }
 
-    //Function to get all the answers for the question uuid passed
+    //Function to get all the answers for the question uuid passed. If no result found, return null
     public List<AnswerEntity> getAnswerByQuestionId(final QuestionEntity questionId) {
         try {
             List<AnswerEntity> resultList = entityManager.createNamedQuery("answersByQuestionId", AnswerEntity.class).setParameter("question", questionId).getResultList();
