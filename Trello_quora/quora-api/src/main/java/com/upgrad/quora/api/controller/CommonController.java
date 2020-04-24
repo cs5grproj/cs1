@@ -15,26 +15,37 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/")
 public class CommonController {
 
-    @Autowired
-    private CommonService commonService;
+  @Autowired private CommonService commonService;
 
-    @RequestMapping(method = RequestMethod.GET, path = "/userprofile/{userId}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-//    @GetMapping(value = "/userprofile/{userId}", produces = "application/json")
-    public ResponseEntity<UserDetailsResponse> userProfile(@PathVariable("userId") final String userId, @RequestHeader("authorization") final String authorization) throws AuthorizationFailedException, UserNotFoundException {
+  @RequestMapping(
+      method = RequestMethod.GET,
+      path = "/userprofile/{userId}",
+      produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+  //    @GetMapping(value = "/userprofile/{userId}", produces = "application/json")
+  public ResponseEntity<UserDetailsResponse> userProfile(
+      @PathVariable("userId") final String userId,
+      @RequestHeader("authorization") final String authorization)
+      throws AuthorizationFailedException, UserNotFoundException {
 
-//        String bearerToken = null;
-//
-//        try {
-//            bearerToken = authorization.split("Bearer ")[1];
-//        } catch (ArrayIndexOutOfBoundsException e) {
-//            bearerToken = authorization;
-//        }
+    //        String bearerToken = null;
+    //
+    //        try {
+    //            bearerToken = authorization.split("Bearer ")[1];
+    //        } catch (ArrayIndexOutOfBoundsException e) {
+    //            bearerToken = authorization;
+    //        }
 
-        final UserEntity userEntity = commonService.getUserByUuid(userId, authorization);
-        UserDetailsResponse userDetailsResponse = new UserDetailsResponse().firstName(userEntity.getFirstName())
-                .lastName(userEntity.getLastName()).userName(userEntity.getUserName()).emailAddress(userEntity.getEmail())
-                .country(userEntity.getCountry()).aboutMe(userEntity.getAboutMe()).dob(userEntity.getDob()).contactNumber(userEntity.getContactNumber());
-        return new ResponseEntity<UserDetailsResponse>(userDetailsResponse, HttpStatus.OK);
-
-    }
+    final UserEntity userEntity = commonService.getUserByUuid(userId, authorization);
+    UserDetailsResponse userDetailsResponse =
+        new UserDetailsResponse()
+            .firstName(userEntity.getFirstName())
+            .lastName(userEntity.getLastName())
+            .userName(userEntity.getUserName())
+            .emailAddress(userEntity.getEmail())
+            .country(userEntity.getCountry())
+            .aboutMe(userEntity.getAboutMe())
+            .dob(userEntity.getDob())
+            .contactNumber(userEntity.getContactNumber());
+    return new ResponseEntity<UserDetailsResponse>(userDetailsResponse, HttpStatus.OK);
+  }
 }

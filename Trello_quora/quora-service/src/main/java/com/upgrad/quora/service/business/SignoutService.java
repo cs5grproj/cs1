@@ -13,19 +13,19 @@ import java.time.ZonedDateTime;
 @Service
 public class SignoutService {
 
-    @Autowired
-    private UserDAOImpl userDAOImpl;
+  @Autowired private UserDAOImpl userDAOImpl;
 
-    @Transactional(propagation = Propagation.REQUIRED)
-    public UserAuthTokenEntity signOut(final String authorizationToken) throws SignOutRestrictedException {
-        UserAuthTokenEntity userAuthToken = userDAOImpl.getUserAuthToken(authorizationToken);
-        if (userAuthToken != null) {
-            final ZonedDateTime now = ZonedDateTime.now();
-            userAuthToken.setLogoutAt(now);
-            userAuthToken = userDAOImpl.userSignOut(userAuthToken);
-        } else {
-            throw new SignOutRestrictedException("SGR-001", "User is not Signed in");
-        }
-        return userAuthToken;
+  @Transactional(propagation = Propagation.REQUIRED)
+  public UserAuthTokenEntity signOut(final String authorizationToken)
+      throws SignOutRestrictedException {
+    UserAuthTokenEntity userAuthToken = userDAOImpl.getUserAuthToken(authorizationToken);
+    if (userAuthToken != null) {
+      final ZonedDateTime now = ZonedDateTime.now();
+      userAuthToken.setLogoutAt(now);
+      userAuthToken = userDAOImpl.userSignOut(userAuthToken);
+    } else {
+      throw new SignOutRestrictedException("SGR-001", "User is not Signed in");
     }
+    return userAuthToken;
+  }
 }

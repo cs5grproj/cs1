@@ -12,86 +12,88 @@ import java.time.ZonedDateTime;
 @Entity
 @Table(name = "ANSWER")
 @NamedQueries({
-        //Query to retrieve record for a given answer uuid
-        @NamedQuery(name= "answerByUuid", query = "select a from AnswerEntity a where a.uuid =:uuid"),
-        //Query to retrieve record for a given question id
-        @NamedQuery(name = "answersByQuestionId", query = "select ans from AnswerEntity ans where ans.question =:question")
+  // Query to retrieve record for a given answer uuid
+  @NamedQuery(name = "answerByUuid", query = "select a from AnswerEntity a where a.uuid =:uuid"),
+  // Query to retrieve record for a given question id
+  @NamedQuery(
+      name = "answersByQuestionId",
+      query = "select ans from AnswerEntity ans where ans.question =:question")
 })
 public class AnswerEntity implements Serializable {
-    @Id
-    @Column(name = "ID")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+  @Id
+  @Column(name = "ID")
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Integer id;
 
-    @Column(name = "UUID")
-    @NotNull
-    @Size(max = 200)
-    private String uuid;
+  @Column(name = "UUID")
+  @NotNull
+  @Size(max = 200)
+  private String uuid;
 
-    @Column(name = "ANS")
-    @NotNull
-    @Size(max = 255)
-    private String ans;
+  @Column(name = "ANS")
+  @NotNull
+  @Size(max = 255)
+  private String ans;
 
-    @Column(name = "DATE")
-    @NotNull
-    private ZonedDateTime date;
+  @Column(name = "DATE")
+  @NotNull
+  private ZonedDateTime date;
 
-    @ManyToOne
-    @JoinColumn(name = "USER_ID")
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    private UserEntity user;
+  @ManyToOne
+  @JoinColumn(name = "USER_ID")
+  @OnDelete(action = OnDeleteAction.CASCADE)
+  private UserEntity user;
 
-    @ManyToOne
-    @JoinColumn(name = "QUESTION_ID")
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    private QuestionEntity question;
+  @ManyToOne
+  @JoinColumn(name = "QUESTION_ID")
+  @OnDelete(action = OnDeleteAction.CASCADE)
+  private QuestionEntity question;
 
-    public Integer getId() {
-        return id;
-    }
+  public Integer getId() {
+    return id;
+  }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+  public void setId(Integer id) {
+    this.id = id;
+  }
 
-    public String getUuid() {
-        return uuid;
-    }
+  public String getUuid() {
+    return uuid;
+  }
 
-    public void setUuid(String uuid) {
-        this.uuid = uuid;
-    }
+  public void setUuid(String uuid) {
+    this.uuid = uuid;
+  }
 
-    public String getAns() {
-        return ans;
-    }
+  public String getAns() {
+    return ans;
+  }
 
-    public void setAns(String ans) {
-        this.ans = ans;
-    }
+  public void setAns(String ans) {
+    this.ans = ans;
+  }
 
-    public ZonedDateTime getDate() {
-        return date;
-    }
+  public ZonedDateTime getDate() {
+    return date;
+  }
 
-    public void setDate(ZonedDateTime date) {
-        this.date = date;
-    }
+  public void setDate(ZonedDateTime date) {
+    this.date = date;
+  }
 
-    public UserEntity getUser() {
-        return user;
-    }
+  public UserEntity getUser() {
+    return user;
+  }
 
-    public void setUser(UserEntity user) {
-        this.user = user;
-    }
+  public void setUser(UserEntity user) {
+    this.user = user;
+  }
 
-    public QuestionEntity getQuestion() {
-        return question;
-    }
+  public QuestionEntity getQuestion() {
+    return question;
+  }
 
-    public void setQuestion(QuestionEntity question) {
-        this.question= question;
-    }
+  public void setQuestion(QuestionEntity question) {
+    this.question = question;
+  }
 }
