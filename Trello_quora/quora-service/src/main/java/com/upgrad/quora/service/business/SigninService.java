@@ -23,7 +23,7 @@ public class SigninService {
    *
    * @param userName - Username as provided by user
    * @param password - Password as provided by user
-   * @return
+   * @return - Return access token
    * @throws AuthenticationFailedException
    */
   @Transactional(propagation = Propagation.REQUIRED)

@@ -15,6 +15,12 @@ public class SignoutService {
 
   @Autowired private UserDAOImpl userDAOImpl;
 
+  /**
+   *
+   * @param authorizationToken
+   * @return
+   * @throws SignOutRestrictedException
+   */
   @Transactional(propagation = Propagation.REQUIRED)
   public UserAuthTokenEntity signOut(final String authorizationToken)
       throws SignOutRestrictedException {

@@ -15,6 +15,7 @@ public class UserService {
   @Autowired private PasswordCryptographyProvider cryptographyProvider;
 
   /**
+   *
    * @param userEntity
    * @return
    */

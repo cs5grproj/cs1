@@ -11,6 +11,12 @@ import org.springframework.web.context.request.WebRequest;
 @ControllerAdvice
 public class RestExceptionHandler {
 
+    /**
+     *
+     * @param exe - Message Code
+     * @param request - Message
+     * @return
+     */
     @ExceptionHandler(SignUpRestrictedException.class)
     public ResponseEntity<ErrorResponse> signUpRestrictedException(SignUpRestrictedException exe, WebRequest request) {
         return new ResponseEntity<ErrorResponse>(new ErrorResponse().code(exe.getCode()).message(exe.getErrorMessage()),
@@ -18,8 +24,8 @@ public class RestExceptionHandler {
     }
 
     /**
-     * @param exe
-     * @param request
+     * @param exe - Message Code
+     * @param request - Message
      * @return
      */
     @ExceptionHandler(AuthenticationFailedException.class)
@@ -30,8 +36,8 @@ public class RestExceptionHandler {
     }
 
     /**
-     * @param exe
-     * @param request
+     * @param exe - Message Code
+     * @param request - Message
      * @return
      */
     @ExceptionHandler(AuthorizationFailedException.class)
@@ -42,8 +48,8 @@ public class RestExceptionHandler {
     }
 
     /**
-     * @param exe
-     * @param request
+     * @param exe - Message Code
+     * @param request - Message
      * @return
      */
     @ExceptionHandler(UserNotFoundException.class)
@@ -54,8 +60,8 @@ public class RestExceptionHandler {
     }
 
     /**
-     * @param exe
-     * @param request
+     * @param exe - Message Code
+     * @param request - Message
      * @return
      */
     @ExceptionHandler(SignOutRestrictedException.class)
@@ -66,8 +72,8 @@ public class RestExceptionHandler {
     }
 
     /**
-     * @param exe
-     * @param request
+     * @param exe - Message Code
+     * @param request - Message
      * @return
      */
     @ExceptionHandler(InvalidQuestionException.class)
@@ -78,8 +84,8 @@ public class RestExceptionHandler {
     }
 
     /**
-     * @param exe
-     * @param request
+     * @param exe - Message Code
+     * @param request - Message
      * @return
      */
     @ExceptionHandler(AnswerNotFoundException.class)

@@ -15,37 +15,6 @@ public class DeleteService {
 
   @Autowired private UserDAOImpl userDAOImpl;
 
-  //    @Transactional(propagation = Propagation.REQUIRED)
-
-  /**
-   * @param userId
-   * @param authorization
-   * @return
-   * @throws AuthorizationFailedException
-   * @throws UserNotFoundException
-   */
-  //    public String getUserByUuid(final String userId, final String authorization) throws
-  //            AuthorizationFailedException, UserNotFoundException {
-  //
-  //        // Check for existence of user token
-  //        UserAuthTokenEntity userAuthTokenEntity = userDAOImpl.getUserAuthToken(authorization);
-  //        if (userAuthTokenEntity == null) {
-  //            throw new AuthorizationFailedException("ATHR-001", "User has not signed in");
-  //        }
-  //
-  //        if(userAuthTokenEntity.getLogoutAt() != null) {
-  //            throw new AuthorizationFailedException("ATHR-002", "User is signed out.");
-  //        }
-  //
-  //        // Check for user existence in the database
-  //        UserEntity userEntity = userDAOImpl.getUserByUuid(userId);
-  //        if (userEntity == null) {
-  //            throw new UserNotFoundException("USR-001", "User with entered uuid to be deleted
-  // does not exist");
-  //        }
-  //        return userEntity.getUuid();
-  //    }
-
   /**
    * @param userUuid
    * @param authorizationToken
