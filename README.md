@@ -99,3 +99,9 @@ https://github.com/cs5grproj/cs1.git
     `mvn clean install -PskipTests`
     
     `mvn clean install -Psetup`
+
+---
+
+### Swagger UI
+
+```http://localhost:8080/api/swagger-ui.html```
