@@ -121,7 +121,7 @@ public class UserController {
       @RequestHeader("authorization") final String authorization)
       throws SignOutRestrictedException {
 
-    String bearerToken = null;
+    String bearerToken;
     SignoutResponse signoutResponse = null;
 
     try {

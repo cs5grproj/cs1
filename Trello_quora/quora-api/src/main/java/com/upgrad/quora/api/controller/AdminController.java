@@ -38,12 +38,12 @@ public class AdminController {
       @RequestHeader("authorization") final String authorization)
       throws AuthorizationFailedException, UserNotFoundException {
 
-    String bearerToken = null;
-    try {
-      bearerToken = authorization.split("Bearer ")[1];
-    } catch (ArrayIndexOutOfBoundsException e) {
-      bearerToken = authorization;
-    }
+//    String bearerToken = null;
+//    try {
+//      bearerToken = authorization.split("Bearer ")[1];
+//    } catch (ArrayIndexOutOfBoundsException e) {
+//      bearerToken = authorization;
+//    }
 
     String uuid = deleteService.deleteUser(userId, authorization);
     UserDeleteResponse userDeleteResponse =
