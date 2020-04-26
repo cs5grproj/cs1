@@ -47,7 +47,7 @@ public class QuestionService {
 
         // Validates if the authorized user is logged out
         if (userAuthTokenEntity.getLogoutAt() != null) {
-            throw new AuthorizationFailedException("ATHR-002", "User is signed out.Sign in first to edit the question");
+            throw new AuthorizationFailedException("ATHR-002", "User is signed out.Sign in first to post a question");
         }
         questionEntity.setUser(userAuthTokenEntity.getUser());
         return questionDao.createQuestion(questionEntity);
@@ -71,7 +71,7 @@ public class QuestionService {
 
         // Validates if the authorized user is logged out
         if (userAuthTokenEntity.getLogoutAt() != null) {
-            throw new AuthorizationFailedException("ATHR-002", "User is signed out.Sign in first to delete a question");
+            throw new AuthorizationFailedException("ATHR-002", "User is signed out.Sign in first to get all questions");
         }
         List<QuestionEntity> questionEntityList = questionDao.getAllQuestions();
         return questionEntityList;
@@ -182,7 +182,7 @@ public class QuestionService {
         // Validates if the authorized user is logged out
         if (userAuthTokenEntity.getLogoutAt() != null) {
             throw new AuthorizationFailedException(
-                    "ATHR-002", "User is signed out.Sign in first to delete a question");
+                    "ATHR-002", "User is signed out.Sign in first to get all questions posted by a specific user");
         }
         UserEntity userWithUuid = userDAOImpl.getUserByUuid(userId);
 
