@@ -37,41 +37,23 @@ https://github.com/cs5grproj/cs1.git
 
 ### Endpoint 1
 
-- **User Controller**
-	```javascript
-	signup - "/user/signup"
-	signin - "/user/signin"
-	signout - "/user/signout"
-	```
-- **CommonController**
-	```javascript
-	userProfile - "/userprofile/{userId}"
-	```
+- **User Controller**                         
+    ![EP1](Trello_quora/images/ep1.png)
+                                  
+    ![EP1](Trello_quora/images/ep2.png)
 
-- **AdminController**
-	```javascript
-	userDelete - "/admin/user/{userId}"
-	```
+    ![EP1](Trello_quora/images/ep3.png)
+
 ### Endpoint 2
 
 - **QuestionController**
-	```javascript
-	createQuestion - "/question/create"
-	getAllQuestions - "/question/all"
-	editQuestionContent - "/question/edit/{questionId}"
-	deleteQuestion - "/question/delete/{questionId}"
-	getAllQuestionsByUser - "question/all/{userId}"
-	```
+    ![EP2](Trello_quora/images/ep5.png)
+
 	
 ### Endpoint 3
 
 - **AnswerController**
-	```javascript
-	createAnswer - "/question/{questionId}/answer/create"
-	editAnswerContent - "/answer/edit/{answerId}"
-	deleteAnswer - "/answer/delete/{answerId}"
-	getAllAnswersToQuestion - "answer/all/{questionId}"
-	```
+    ![EP3](Trello_quora/images/ep6.png)
 
 ---
 
@@ -105,3 +87,18 @@ https://github.com/cs5grproj/cs1.git
 ### Swagger UI
 
 ```http://localhost:8080/api/swagger-ui.html```
+
+---
+
+### Manual Testing on Swagger UI
+
+- #### Endpoint 1
+    ![TC1](Trello_quora/images/tc1.png)
+    
+    ![TC2](Trello_quora/images/tc2.png)
+
+    ![TC2](Trello_quora/images/tc3.png)
+    
+- #### Endpoint 2
+
+- #### Endpoint 3
