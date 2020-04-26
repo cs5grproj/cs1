@@ -60,13 +60,15 @@ https://github.com/cs5grproj/cs1.git
 ### Project import instructions (Intellij IDEA)
 
 1. Import Project from Version Control
-![Project Import](Trello_quora/images/1.png)
+    ![Project Import](Trello_quora/images/1.png)
 
 2. Provide GIT repository path to clone the project to the local target directory
-![Project Import](Trello_quora/images/2.png)
+    ![Project Import](Trello_quora/images/2.png)
 
 3. Import Maven dependencies
-![Project Import](Trello_quora/images/3.png)
+    ![Project Import](Trello_quora/images/3.png)
+
+    ![Project Import](Trello_quora/images/4.png)
 
 ---
 
@@ -97,8 +99,59 @@ https://github.com/cs5grproj/cs1.git
     
     ![TC2](Trello_quora/images/tc2.png)
 
-    ![TC2](Trello_quora/images/tc3.png)
+    ![TC3](Trello_quora/images/tc3.png)
     
 - #### Endpoint 2
 
+     - createQuestion - "/question/create"
+    
+         ![TC4](Trello_quora/images/cq.png)
+        
+         ![TC5](Trello_quora/images/cq_notsignin.png)
+        
+         ![TC6](Trello_quora/images/cq_athr002.png)
+         
+     - getAllQuestions - "/question/all"
+     
+         ![TC7](Trello_quora/images/qa_athr001.png)
+        
+         ![TC8](Trello_quora/images/question_all.png)
+        
+         ![TC9](Trello_quora/images/questionall_athr002.png)
+         
+     - editQuestionContent - "/question/edit/{questionId}"
+      
+         ![TC10](Trello_quora/images/qeq_athr001.png)
+         
+         ![TC11](Trello_quora/images/qeq_athr002.png)
+         
+         ![TC12](Trello_quora/images/qeq_questionedited.png)
+         
+         ![TC13](Trello_quora/images/qeq_ques001.png)
+         
+         ![TC14](Trello_quora/images/qeq_athr003.png)
+         
+     - deleteQuestion - "/question/delete/{questionId}"
+       
+         ![TC15](Trello_quora/images/qdq_athr001.png)
+         
+         ![TC16](Trello_quora/images/qdq_athr002.png)
+          
+         ![TC17](Trello_quora/images/qdq_questiondeleted.png)
+          
+         ![TC18](Trello_quora/images/qdq_ques001.png)
+         
+         ![TC19](Trello_quora/images/qdq_athr003.png)
+              
+     - getAllQuestionsByUser - "question/all/{userId}"
+
+         ![TC20](Trello_quora/images/qau_athr001.png)
+          
+         ![TC21](Trello_quora/images/qau_all_userid.png)
+         
+         ![TC22](Trello_quora/images/qau_usr001.png)
+         
+         ![TC23](Trello_quora/images/qau_athr002.png)
+
+         
 - #### Endpoint 3
