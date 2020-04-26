@@ -92,7 +92,7 @@ https://github.com/cs5grproj/cs1.git
 
 ---
 
-### Manual Testing on Swagger UI
+### Manual Testing Results on Swagger UI
 
 - #### Endpoint 1
     ![TC1](Trello_quora/images/tc1.png)
@@ -155,3 +155,37 @@ https://github.com/cs5grproj/cs1.git
 
          
 - #### Endpoint 3
+
+    - createAnswer - "/question/{questionId}/answer/create"
+    
+        ![TC24](Trello_quora/images/qqac_answercreated.png)
+    
+        ![TC25](Trello_quora/images/qqac_athr002.png)
+        
+        ![TC26](Trello_quora/images/qqac_ques001.png)
+    
+    - editAnswerContent - "/answer/edit/{answerId}"
+    
+        ![TC27](Trello_quora/images/aea_athr001.png)
+        
+        ![TC28](Trello_quora/images/aea_athr002.png)
+    
+    - deleteAnswer - "/answer/delete/{answerId}"
+    
+        ![TC29](Trello_quora/images/ada_athr001.png)
+        
+        ![TC30](Trello_quora/images/ada_athr002.png)
+       
+        ![TC35](Trello_quora/images/ada_athr003.png)
+    
+    - getAllAnswersToQuestion - "answer/all/{questionId}"
+    
+        ![TC31](Trello_quora/images/aaq_200.png)
+    
+        ![TC32](Trello_quora/images/aaq_athr001.png)
+        
+        ![TC33](Trello_quora/images/aaq_athr002.png)
+        
+        ![TC34](Trello_quora/images/aaq_ques001.png)
+   
+   
