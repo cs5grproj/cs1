@@ -16,8 +16,10 @@ public class SignupService {
   @Autowired private UserService userService;
 
   /**
-   * @param userEntity
-   * @return
+   * This method validates existence of a user in the User schema and either signs up a user or throws appropriate exceptions
+   *
+   * @param userEntity - Accept object of type UserEntity as an argument
+   * @return - returns userEntity object
    * @throws SignUpRestrictedException
    */
   @Transactional(propagation = Propagation.REQUIRED)

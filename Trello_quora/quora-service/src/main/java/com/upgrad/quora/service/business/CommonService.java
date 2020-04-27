@@ -14,9 +14,11 @@ public class CommonService {
   @Autowired private UserDAOImpl userDAOImpl;
 
   /**
-   * @param userId
-   * @param authorization
-   * @return
+   * Fetch user record from the User schema and throw appropriate exceptions
+   *
+   * @param userId - Accept userId as argument
+   * @param authorization - Accept authentication token as argument
+   * @return - returns object of type UserEntity
    * @throws AuthorizationFailedException
    * @throws UserNotFoundException
    */
@@ -45,23 +47,21 @@ public class CommonService {
   }
 
   /**
-   * This method is to authorize the user. If user token is valid and is user still logged in.
+   * This method is to authorize the user by validating the user token and whether the user is still logged in.
    *
-   * @param authorization
-   * @return UserAuthTokenEntity object
-   * @thows AuthorizationFailedException
+   * @param authorization - Accept authentication token as argument
+   * @return - Return UserAuthTokenEntity object
+   * @throws AuthorizationFailedException
    */
   public UserAuthTokenEntity getUserAuthorizationStatus(final String authorization)
       throws AuthorizationFailedException {
 
-    // Validate user token
     UserAuthTokenEntity userAuthTokenEntity = userDAOImpl.getUserAuthToken(authorization);
 
     if (userAuthTokenEntity == null) {
       throw new AuthorizationFailedException("ATHR-001", "User has not signed in");
     }
 
-    // Validate user logout
     if (userAuthTokenEntity.getLogoutAt() != null) {
       throw new AuthorizationFailedException(
           "ATHR-002", "User is signed out.Sign in first to get user details");

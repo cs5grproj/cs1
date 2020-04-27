@@ -16,11 +16,12 @@ public class SignoutService {
   @Autowired private UserDAOImpl userDAOImpl;
 
   /**
+   * Method to sign-out a user. If user is already signed-in, the logout_at field in the user_auth schema is updated with the logout time else throws an exception
    *
-   * @param authorizationToken
-   * @return
+   * @param authorizationToken - Accept authorization token as an argument
+   * @return - returns obect of type UserAuthTokenEntity
    * @throws SignOutRestrictedException
-   */
+   **/
   @Transactional(propagation = Propagation.REQUIRED)
   public UserAuthTokenEntity signOut(final String authorizationToken)
       throws SignOutRestrictedException {

@@ -15,9 +15,10 @@ public class UserService {
   @Autowired private PasswordCryptographyProvider cryptographyProvider;
 
   /**
+   * Method to register a new user in the Quora Application for the endpoint "/user/signup"
    *
-   * @param userEntity
-   * @return
+   * @param userEntity - Accept object of type UserEntity as an argument
+   * @return - returns userEntity object
    */
   @Transactional(propagation = Propagation.REQUIRED)
   public UserEntity signUpUser(final UserEntity userEntity) {
